@@ -487,7 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   previewUI: {fileID: 1540649074}
-  videoName: trumpVsHarris.mp4
+  videoName: randomFace.mp4
   inputImage: {fileID: 0}
   inputType: 1
 --- !u!4 &1544256752
