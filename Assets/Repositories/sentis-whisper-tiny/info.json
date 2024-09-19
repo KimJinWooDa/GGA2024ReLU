@@ -1,0 +1,16 @@
+{
+    "code": [
+      "RunWhisper.cs"
+    ],
+    "models": [
+        "AudioEncoder_Tiny.sentis",
+        "AudioDecoder_Tiny.sentis",
+        "LogMelSepctro.sentis"
+    ],
+    "data" : [
+        "vocab.json"
+    ],
+    "version" : [
+         "1.4.0"
+    ]
+}
