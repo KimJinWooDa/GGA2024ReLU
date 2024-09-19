@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -11,6 +12,10 @@ public class DecisionSystem : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Image recordImage;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private UnityEngine.UI.Slider scoreSlider;
+    [SerializeField] private Animator catAnimator;
+    [SerializeField] private TextMeshProUGUI attemptText;
+    [SerializeField] private GameObject endGamePanel;
+    [SerializeField] private UnityEngine.UI.Button restartButton;
 
     [SerializeField] private Sprite recordingSprite;
     [SerializeField] private Sprite notRecordingSprite;
@@ -23,6 +28,7 @@ public class DecisionSystem : MonoBehaviour
     private bool isRecording = false;
     private string answerString = string.Empty;
     private float totalScore = 0;
+    private const string isMove = "IsMove";
     private void Start()
     {
         answerString = questionText.text;
@@ -40,10 +46,19 @@ public class DecisionSystem : MonoBehaviour
                 StopRecording();
             }
         });
+        restartButton.onClick.AddListener(RestartGame);
         
         microphoneRecorder.transcriptionCompleteCallback += OnTranscriptionComplete;
         recordImage.sprite = notRecordingSprite;
         scoreSlider.value = 0;
+    }
+
+    private void RestartGame()
+    {
+        endGamePanel.gameObject.SetActive(false);
+        scoreSlider.value = 0;
+        totalScore = 0;
+        attemptText.text = string.Empty;
     }
 
     private void SetNewQuestion()
@@ -70,9 +85,36 @@ public class DecisionSystem : MonoBehaviour
     {
         int score = Mathf.Max(0, perfectOneRoundScore - SimpleCharacterDifference(inTranscribedString, answerString));
         scoreText.text = score.ToString();
-        totalScore += score;
+        float newTotalScore = totalScore + score;
         
-        scoreSlider.value = totalScore / finalScore;
+        StartCoroutine(UpdateSliderValueOverTime(totalScore, newTotalScore, 1f));
+        
+        totalScore = newTotalScore;
+        if (totalScore > finalScore)
+        {
+            EndGame();
+        }
+    }
+
+    private void EndGame()
+    {
+        endGamePanel.gameObject.SetActive(true);
+    }
+
+    private IEnumerator UpdateSliderValueOverTime(float startValue, float endValue, float duration)
+    {
+        float timeElapsed = 0f;
+        catAnimator.SetBool(isMove, true);
+        while (timeElapsed < duration)
+        {
+            float t = timeElapsed / duration;
+            scoreSlider.value = Mathf.Lerp(startValue / finalScore, endValue / finalScore, t);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        scoreSlider.value = endValue / finalScore;
+        catAnimator.SetBool(isMove, false);
     }
 
     private int SimpleCharacterDifference(string a, string b)
