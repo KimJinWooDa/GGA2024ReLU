@@ -73,3 +73,4 @@ crashlytics-build.properties
 
 **/phi15.sentis
 .DS_Store
+.vsconfig
