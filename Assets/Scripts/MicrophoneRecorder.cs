@@ -6,6 +6,8 @@ using System.IO;
 
 public class MicrophoneRecorder : MonoBehaviour
 {
+    public Action<string> transcriptionCompleteCallback;
+    
     public AudioClip recordedClip;
     private const int maxSamples = 30 * 16000; // 30초 동안 16kHz 샘플링
     private float[] data;
@@ -21,6 +23,8 @@ public class MicrophoneRecorder : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI transcriptionDisplay;
+    [SerializeField] 
+    private TextMeshProUGUI resultDisplay;
 
     // 오디오 파일 저장 경로
     private string saveFilePath;
@@ -177,9 +181,12 @@ public class MicrophoneRecorder : MonoBehaviour
     // 트랜스크립션 결과를 TextMeshPro에 업데이트하는 함수
     void UpdateTranscriptionDisplay(string transcription)
     {
+        transcriptionCompleteCallback?.Invoke(transcription);
         if (transcriptionDisplay != null)
         {
             transcriptionDisplay.text = transcription;
         }
     }
+
+    
 }
