@@ -3908,7 +3908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e9fdb7197219c4282077ef8e359906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WhisperModelSetting: 1
+  WhisperModelSetting: 0
   questionText: {fileID: 317646772}
   newQuestionButton: {fileID: 277521834}
   recordButton: {fileID: 1892117909}
