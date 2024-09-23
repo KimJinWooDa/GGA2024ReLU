@@ -708,7 +708,19 @@ MonoBehaviour:
   m_Group: {fileID: 782945057}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 999016455}
+        m_TargetAssemblyTypeName: DecisionSystem, Assembly-CSharp
+        m_MethodName: OnToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &126947564
 GameObject:
@@ -1893,7 +1905,7 @@ GameObject:
   - component: {fileID: 460237753}
   - component: {fileID: 460237754}
   m_Layer: 5
-  m_Name: WhisperToggle
+  m_Name: SyllableToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1966,7 +1978,19 @@ MonoBehaviour:
   m_Group: {fileID: 333076663}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 999016455}
+        m_TargetAssemblyTypeName: DecisionSystem, Assembly-CSharp
+        m_MethodName: OnToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &556294921
 GameObject:
@@ -2606,7 +2630,19 @@ MonoBehaviour:
   m_Group: {fileID: 782945057}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 999016455}
+        m_TargetAssemblyTypeName: DecisionSystem, Assembly-CSharp
+        m_MethodName: OnToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &732537744
 GameObject:
@@ -2739,7 +2775,7 @@ GameObject:
   - component: {fileID: 766571263}
   - component: {fileID: 766571264}
   m_Layer: 5
-  m_Name: AzureToggle
+  m_Name: PhonemeToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2812,7 +2848,19 @@ MonoBehaviour:
   m_Group: {fileID: 333076663}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 999016455}
+        m_TargetAssemblyTypeName: DecisionSystem, Assembly-CSharp
+        m_MethodName: OnToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &782945055
 GameObject:
@@ -3503,12 +3551,12 @@ MonoBehaviour:
     \uC7A5\uC2DD\uD558\uACE0 \uC788\uC5C8\uB2E4."
   - "\uC0C8\uB85C \uC2DC\uC791\uD55C \uD504\uB85C\uC81D\uD2B8\uAC00 \uC0DD\uAC01\uBCF4\uB2E4
     \uC21C\uC870\uB86D\uAC8C \uC9C4\uD589\uB418\uACE0 \uC788\uB2E4."
-  whisperToggle: {fileID: 0}
-  azureToggle: {fileID: 0}
-  levenshteinToggle: {fileID: 0}
-  simpleCharacterDifferenceToggle: {fileID: 0}
-  phonemeToggle: {fileID: 0}
-  syllableToggle: {fileID: 0}
+  whisperToggle: {fileID: 117549118}
+  azureToggle: {fileID: 722762248}
+  levenshteinToggle: {fileID: 1381043280}
+  simpleCharacterDifferenceToggle: {fileID: 1626462542}
+  phonemeToggle: {fileID: 766571264}
+  syllableToggle: {fileID: 460237754}
 --- !u!4 &999016456
 Transform:
   m_ObjectHideFlags: 0
@@ -4303,7 +4351,7 @@ GameObject:
   - component: {fileID: 1381043279}
   - component: {fileID: 1381043280}
   m_Layer: 5
-  m_Name: AzureToggle
+  m_Name: LevenshteinToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4376,7 +4424,19 @@ MonoBehaviour:
   m_Group: {fileID: 1458916686}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 999016455}
+        m_TargetAssemblyTypeName: DecisionSystem, Assembly-CSharp
+        m_MethodName: OnToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &1394220482
 GameObject:
@@ -4791,7 +4851,7 @@ GameObject:
   - component: {fileID: 1626462541}
   - component: {fileID: 1626462542}
   m_Layer: 5
-  m_Name: WhisperToggle
+  m_Name: SimpleCharacterToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4864,7 +4924,19 @@ MonoBehaviour:
   m_Group: {fileID: 1458916686}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 999016455}
+        m_TargetAssemblyTypeName: DecisionSystem, Assembly-CSharp
+        m_MethodName: OnToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1629050615
 GameObject:

@@ -167,6 +167,12 @@ public class DecisionSystem : MonoBehaviour
         {
             SetToStopRecording();
         }
+
+        if (stringCompareType == StringCompareType.Phoneme)
+        {
+            inTranscribedString = DecomposeKoreanToPhonemes(inTranscribedString);
+            answerString = DecomposeKoreanToPhonemes(answerString);
+        }
         
         int distance = 0;
         if (calculationType == CalculationType.Levenshtein)
@@ -190,8 +196,41 @@ public class DecisionSystem : MonoBehaviour
             EndGame();
         }
     }
-    
-    
+
+    private string DecomposeKoreanToPhonemes(string input)
+    {
+        string result = string.Empty;
+
+        foreach (char c in input)
+        {
+            // Check if the character is a Korean syllable
+            if (c >= 0xAC00 && c <= 0xD7A3)
+            {
+                int unicodeIndex = c - 0xAC00;
+                int initial = unicodeIndex / (21 * 28);
+                int medial = (unicodeIndex % (21 * 28)) / 28;
+                int final = unicodeIndex % 28;
+
+                // Add the individual phonemes (초성, 중성, 종성)
+                result += (char)(0x1100 + initial);  // 초성 (initial)
+                result += (char)(0x1161 + medial);   // 중성 (medial)
+
+                if (final != 0)
+                {
+                    result += (char)(0x11A7 + final); // 종성 (final)
+                }
+            }
+            else
+            {
+                // If not a Korean syllable, keep the character as it is
+                result += c;
+            }
+        }
+
+        return result;
+    }
+
+
 
     private IEnumerator UpdateSliderValueOverTime(float startValue, float endValue, float duration)
     {
