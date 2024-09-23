@@ -129,7 +129,7 @@ public class AzureSTT : MonoBehaviour
             }
 #else
             micPermissionGranted = true;
-            message = "Click button to recognize speech";
+            message = "";
 #endif
             //startRecoButton.onClick.AddListener(ButtonClick);
         }
