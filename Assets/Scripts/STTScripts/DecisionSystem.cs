@@ -129,6 +129,18 @@ public class DecisionSystem : MonoBehaviour
         if (sttType == STTType.Whisper)
         {
             azureSTT.IsEnabled = false;
+            if (tiny.isOn)
+            {
+                
+            }
+            else if (medium.isOn)
+            {
+                
+            }
+            else if (large.isOn)
+            {
+                
+            }
             microphoneRecorder.StartRecording(); //STT 녹음 시작
             microphoneRecorder.transcriptionCompleteCallback -= OnTranscriptionComplete;
             microphoneRecorder.transcriptionCompleteCallback += OnTranscriptionComplete;
