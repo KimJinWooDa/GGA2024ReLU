@@ -39,6 +39,11 @@ public class DecisionSystem : MonoBehaviour
     [SerializeField] private Toggle simpleCharacterDifferenceToggle;
     [SerializeField] private Toggle phonemeToggle;
     [SerializeField] private Toggle syllableToggle;
+    //Whister관련 추가 toggle
+    [SerializeField] private GameObject whisperModelObject;
+    [SerializeField] private Toggle tiny;
+    [SerializeField] private Toggle medium;
+    [SerializeField] private Toggle large;
     
     // Enum definitions for STT, comparison, and string comparison types
     private enum STTType { Whisper, Azure }
@@ -94,6 +99,7 @@ public class DecisionSystem : MonoBehaviour
 
     public void OnToggle()
     {
+        whisperModelObject.gameObject.SetActive(sttType == STTType.Whisper);
         if (whisperToggle != null && azureToggle != null)
         {
             sttType = whisperToggle.isOn ? STTType.Whisper : STTType.Azure;
@@ -287,6 +293,7 @@ public class DecisionSystem : MonoBehaviour
     
     private void RestartGame()
     {
+        whisperModelObject.gameObject.SetActive(sttType == STTType.Whisper);
         endGamePanel.gameObject.SetActive(false);
         scoreSlider.value = 0;
         totalScore = 0;
