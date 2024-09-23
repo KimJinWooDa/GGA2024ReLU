@@ -55,9 +55,12 @@ public class MicrophoneRecorder : MonoBehaviour
 
         Debug.Log("Microphone recording started");
 
-        // 녹음 완료 버튼 활성화, 녹음 시작 버튼 비활성화
-        startRecordingButton.interactable = false;
-        stopRecordingButton.interactable = true;
+        if (startRecordingButton != null && stopRecordingButton != null)
+        {
+            // 녹음 완료 버튼 활성화, 녹음 시작 버튼 비활성화
+            startRecordingButton.interactable = false;
+            stopRecordingButton.interactable = true;
+        }
     }
 
     public void StopRecording()
@@ -80,9 +83,12 @@ public class MicrophoneRecorder : MonoBehaviour
 
             Debug.Log("Microphone recording stopped");
 
-            // 녹음 시작 버튼 활성화, 녹음 완료 버튼 비활성화
-            startRecordingButton.interactable = true;
-            stopRecordingButton.interactable = false;
+            if (startRecordingButton != null && stopRecordingButton != null)
+            {
+                // 녹음 시작 버튼 활성화, 녹음 완료 버튼 비활성화
+                startRecordingButton.interactable = true;
+                stopRecordingButton.interactable = false;
+            }
 
             // 녹음 완료 후 오디오 파일로 저장
             SaveRecordedAudio(saveFilePath);
