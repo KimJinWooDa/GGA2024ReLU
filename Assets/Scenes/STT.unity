@@ -1508,7 +1508,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC6B0\uCE21 \uBC84\uD2BC\uC744 \uD074\uB9AD\uD558\uC5EC \uBB38\uC81C\uB97C
+  m_text: "\uC88C\uCE21 \uBC84\uD2BC\uC744 \uD074\uB9AD\uD558\uC5EC \uBB38\uC81C\uB97C
     \uBCC0\uACBD\uD558\uC138\uC694. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3bd05703497724fbb97f6ac673ffb0a2, type: 2}

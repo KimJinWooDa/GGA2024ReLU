@@ -61,6 +61,8 @@ public class DecisionSystem : MonoBehaviour
     private const string isMove = "IsMove";
     private void Start()
     {
+        RestartGame();
+        
         answerString = questionText.text;
         
         newQuestionButton.onClick.RemoveAllListeners();
@@ -298,6 +300,7 @@ public class DecisionSystem : MonoBehaviour
         endGamePanel.gameObject.SetActive(false);
         scoreSlider.value = 0;
         totalScore = 0;
+        scoreText.text = string.Empty;
         attemptText.text = string.Empty;
     }
     private void EndGame()
