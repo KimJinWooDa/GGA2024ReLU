@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class DecisionSystem : MonoBehaviour
 {
@@ -26,26 +27,33 @@ public class DecisionSystem : MonoBehaviour
     [SerializeField] private AzureSTT azureSTT;
     [SerializeField] private List<string> answerBook = new List<string>();
 
-    //options
+    //toggle options
     public enum STTType
     {
+        Whisper,
         Azure,
-        Whisper
     }
+    [SerializeField] private Toggle whisperToggle;
+    [SerializeField] private Toggle azureToggle;
     public enum CalculationType
     {
         Levenshtein,
         SimpleCharacterDifference
     }
-
+    [SerializeField] private Toggle levenshteinToggle;
+    [SerializeField] private Toggle simpleCharacterDifferenceToggle;
     public enum StringCompareType
     {
         Phoneme,
         Syllable,
     }
-    STTType sttType = STTType.Azure;
-    CalculationType calculationType = CalculationType.Levenshtein;
+    [SerializeField] private Toggle phonemeToggle;
+    [SerializeField] private Toggle syllableToggle;
+    
+    STTType sttType = STTType.Whisper;
+    CalculationType calculationType = CalculationType.SimpleCharacterDifference;
     StringCompareType stringCompareType = StringCompareType.Syllable;
+    
     
     private bool isRecording = false;
     private string answerString = string.Empty;
@@ -80,14 +88,35 @@ public class DecisionSystem : MonoBehaviour
         scoreSlider.value = 0;
     }
 
-    private void RestartGame()
+    public void OnToggle()
     {
-        endGamePanel.gameObject.SetActive(false);
-        scoreSlider.value = 0;
-        totalScore = 0;
-        attemptText.text = string.Empty;
-    }
+        if (whisperToggle.isOn)
+        {
+            sttType = STTType.Whisper;
+        }
+        else if (azureToggle.isOn)
+        {
+            sttType = STTType.Azure;
+        }
 
+        if (levenshteinToggle.isOn)
+        {
+            calculationType = CalculationType.Levenshtein;
+        }
+        else if (simpleCharacterDifferenceToggle.isOn)
+        {
+            calculationType = CalculationType.SimpleCharacterDifference;
+        }
+
+        if (phonemeToggle.isOn)
+        {
+            stringCompareType = StringCompareType.Phoneme;
+        }
+        else if (syllableToggle.isOn)
+        {
+            stringCompareType = StringCompareType.Syllable;
+        }
+    }
     private void SetNewQuestion()
     {
         answerString = answerBook[UnityEngine.Random.Range(0, answerBook.Count)];
@@ -161,10 +190,8 @@ public class DecisionSystem : MonoBehaviour
             EndGame();
         }
     }
-    private void EndGame()
-    {
-        endGamePanel.gameObject.SetActive(true);
-    }
+    
+    
 
     private IEnumerator UpdateSliderValueOverTime(float startValue, float endValue, float duration)
     {
@@ -225,6 +252,18 @@ public class DecisionSystem : MonoBehaviour
         }
 
         return matrix[a.Length, b.Length];
+    }
+    
+    private void RestartGame()
+    {
+        endGamePanel.gameObject.SetActive(false);
+        scoreSlider.value = 0;
+        totalScore = 0;
+        attemptText.text = string.Empty;
+    }
+    private void EndGame()
+    {
+        endGamePanel.gameObject.SetActive(true);
     }
 
 }
