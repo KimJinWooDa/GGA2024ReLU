@@ -23,8 +23,30 @@ public class DecisionSystem : MonoBehaviour
     [SerializeField] private float finalScore = 1000;
     
     [SerializeField] private MicrophoneRecorder microphoneRecorder;
+    [SerializeField] private AzureSTT azureSTT;
     [SerializeField] private List<string> answerBook = new List<string>();
 
+    //options
+    public enum STTType
+    {
+        Azure,
+        Whisper
+    }
+    public enum CalculationType
+    {
+        Levenshtein,
+        SimpleCharacterDifference
+    }
+
+    public enum StringCompareType
+    {
+        Phoneme,
+        Syllable,
+    }
+    STTType sttType = STTType.Azure;
+    CalculationType calculationType = CalculationType.Levenshtein;
+    StringCompareType stringCompareType = StringCompareType.Syllable;
+    
     private bool isRecording = false;
     private string answerString = string.Empty;
     private float totalScore = 0;
@@ -33,8 +55,10 @@ public class DecisionSystem : MonoBehaviour
     {
         answerString = questionText.text;
         
+        newQuestionButton.onClick.RemoveAllListeners();
         newQuestionButton.onClick.AddListener(SetNewQuestion);
         
+        recordButton.onClick.RemoveAllListeners();
         recordButton.onClick.AddListener(() =>
         {
             if (!isRecording)
@@ -43,12 +67,15 @@ public class DecisionSystem : MonoBehaviour
             }
             else
             {
-                StopRecording();
+                StopRecordingWhisper();
             }
         });
+        
+        azureSTT.TranscriptionCompleteCallback += OnTranscriptionComplete;
+        
+        restartButton.onClick.RemoveAllListeners();
         restartButton.onClick.AddListener(RestartGame);
         
-        microphoneRecorder.transcriptionCompleteCallback += OnTranscriptionComplete;
         recordImage.sprite = notRecordingSprite;
         scoreSlider.value = 0;
     }
@@ -69,21 +96,59 @@ public class DecisionSystem : MonoBehaviour
 
     private void StartRecording()
     {
-        isRecording = true;
-        recordImage.sprite = recordingSprite;
-        microphoneRecorder.StartRecording();
+        SetToStartRecording();
+
+        if (sttType == STTType.Whisper)
+        {
+            azureSTT.IsEnabled = false;
+            microphoneRecorder.StartRecording();
+            microphoneRecorder.transcriptionCompleteCallback -= OnTranscriptionComplete;
+            microphoneRecorder.transcriptionCompleteCallback += OnTranscriptionComplete;
+        }
+        else
+        {
+            azureSTT.IsEnabled = true;
+            azureSTT.RecognizeSpeech();
+        }
     }
 
-    private void StopRecording()
+    private void SetToStartRecording()
+    {
+        isRecording = true;
+        recordImage.sprite = recordingSprite;
+    }
+    private void SetToStopRecording()
     {
         isRecording = false;
         recordImage.sprite = notRecordingSprite;
-        microphoneRecorder.StopRecording();
+    }
+    private void StopRecordingWhisper()
+    {
+        SetToStopRecording();
+
+        if (sttType == STTType.Whisper)
+        {
+            microphoneRecorder.StopRecording();
+        }
     }
 
     private void OnTranscriptionComplete(string inTranscribedString)
     {
-        int distance = LevenshteinDistance(inTranscribedString, answerString);
+        if (sttType == STTType.Azure)
+        {
+            SetToStopRecording();
+        }
+        
+        int distance = 0;
+        if (calculationType == CalculationType.Levenshtein)
+        {
+            distance = LevenshteinDistance(inTranscribedString, answerString);
+        }
+        else if (calculationType == CalculationType.SimpleCharacterDifference)
+        {
+            distance = SimpleCharacterDifference(inTranscribedString, answerString);
+        }
+        
         int score = Mathf.Max(0, perfectOneRoundScore - distance);
         scoreText.text = score.ToString();
         float newTotalScore = totalScore + score;
