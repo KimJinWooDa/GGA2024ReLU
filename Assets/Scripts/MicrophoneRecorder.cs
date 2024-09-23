@@ -32,11 +32,14 @@ public class MicrophoneRecorder : MonoBehaviour
     void Start()
     {
         // 버튼에 메서드 연결
-        startRecordingButton.onClick.AddListener(StartRecording);
-        stopRecordingButton.onClick.AddListener(StopRecording);
-
-        // 처음에는 녹음 완료 버튼 비활성화
-        stopRecordingButton.interactable = false;
+        if (startRecordingButton != null && stopRecordingButton != null)
+        {
+            startRecordingButton.onClick.AddListener(StartRecording);
+            stopRecordingButton.onClick.AddListener(StopRecording);
+            
+            // 처음에는 녹음 완료 버튼 비활성화
+            stopRecordingButton.interactable = false;
+        }
 
         // 저장할 경로 설정
         saveFilePath = Path.Combine(Application.dataPath, "RecordedAudio.wav");
