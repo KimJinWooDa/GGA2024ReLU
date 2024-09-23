@@ -25,7 +25,6 @@ public class AzureSTT : MonoBehaviour
     
     // Hook up the two properties below with a Text and Button object in your UI
     [SerializeField] private TextMeshProUGUI attemptText;
-    public Button startRecoButton;
 
     private object threadLocker = new object();
     private bool waitingForReco;
@@ -106,11 +105,6 @@ public class AzureSTT : MonoBehaviour
         {
             UnityEngine.Debug.LogError("outputText property is null! Assign a UI Text element to it.");
         }
-        // else if (startRecoButton == null)
-        // {
-        //     message = "startRecoButton property is null! Assign a UI Button to it.";
-        //     UnityEngine.Debug.LogError(message);
-        // }
         else
         {
             // Continue with normal initialization, Text and Button objects are present.
@@ -153,10 +147,6 @@ public class AzureSTT : MonoBehaviour
 
         lock (threadLocker)
         {
-            if (startRecoButton != null)
-            {
-                startRecoButton.interactable = !waitingForReco && micPermissionGranted;
-            }
             if (attemptText != null && IsEnabled)
             {
                 attemptText.text = message;
