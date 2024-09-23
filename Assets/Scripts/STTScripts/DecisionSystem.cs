@@ -293,7 +293,7 @@ public class DecisionSystem : MonoBehaviour
     
     private void RestartGame()
     {
-        whisperModelObject.gameObject.SetActive(sttType == STTType.Whisper);
+        OnToggle();
         endGamePanel.gameObject.SetActive(false);
         scoreSlider.value = 0;
         totalScore = 0;
