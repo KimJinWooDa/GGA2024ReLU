@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class DecisionSystem : MonoBehaviour
 {
+    //UI 요소들 
     [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private UnityEngine.UI.Button newQuestionButton;
     [SerializeField] private UnityEngine.UI.Button recordButton;
@@ -18,53 +19,59 @@ public class DecisionSystem : MonoBehaviour
     [SerializeField] private GameObject endGamePanel;
     [SerializeField] private UnityEngine.UI.Button restartButton;
 
+    //녹음 상태 이미지 교체 리소스
     [SerializeField] private Sprite recordingSprite;
     [SerializeField] private Sprite notRecordingSprite;
-    [FormerlySerializedAs("perfectScore")] [SerializeField] private int perfectOneRoundScore = 100;
+    
+    //게임 설정
+    [SerializeField] private int perfectOneRoundScore = 100;
     [SerializeField] private float finalScore = 1000;
     
+    //STT, 음성인식, 비교 관련
     [SerializeField] private MicrophoneRecorder microphoneRecorder;
     [SerializeField] private AzureSTT azureSTT;
     [SerializeField] private List<string> answerBook = new List<string>();
 
-    //toggle options
-    public enum STTType
-    {
-        Whisper,
-        Azure,
-    }
+    //토글 UI 요소들 
     [SerializeField] private Toggle whisperToggle;
     [SerializeField] private Toggle azureToggle;
-    public enum CalculationType
-    {
-        Levenshtein,
-        SimpleCharacterDifference
-    }
     [SerializeField] private Toggle levenshteinToggle;
     [SerializeField] private Toggle simpleCharacterDifferenceToggle;
-    public enum StringCompareType
-    {
-        Phoneme,
-        Syllable,
-    }
     [SerializeField] private Toggle phonemeToggle;
     [SerializeField] private Toggle syllableToggle;
     
-    STTType sttType = STTType.Whisper;
-    CalculationType calculationType = CalculationType.SimpleCharacterDifference;
-    StringCompareType stringCompareType = StringCompareType.Syllable;
+    // Enum definitions for STT, comparison, and string comparison types
+    private enum STTType { Whisper, Azure }
+    private enum CalculationType { Levenshtein, SimpleCharacterDifference }
+    private enum StringCompareType { Phoneme, Syllable }
     
+    // Current settings
+    private STTType sttType = STTType.Whisper;
+    private CalculationType calculationType = CalculationType.SimpleCharacterDifference;
+    private StringCompareType stringCompareType = StringCompareType.Syllable;
     
+    //현재 게임 상태 
     private bool isRecording = false;
     private string answerString = string.Empty;
     private float totalScore = 0;
     private const string isMove = "IsMove";
     private void Start()
     {
+        InitializeGame();
+        SetupUIListeners();
+    }
+
+    private void InitializeGame()
+    {
         RestartGame();
-        
-        answerString = questionText.text;
-        
+        SetNewQuestion();
+        recordImage.sprite = notRecordingSprite;
+        scoreSlider.value = 0;
+        azureSTT.TranscriptionCompleteCallback += OnTranscriptionComplete;
+    }
+
+    private void SetupUIListeners()
+    {
         newQuestionButton.onClick.RemoveAllListeners();
         newQuestionButton.onClick.AddListener(SetNewQuestion);
         
@@ -77,46 +84,29 @@ public class DecisionSystem : MonoBehaviour
             }
             else
             {
-                StopRecordingWhisper();
+                StopRecording();
             }
         });
         
-        azureSTT.TranscriptionCompleteCallback += OnTranscriptionComplete;
-        
         restartButton.onClick.RemoveAllListeners();
         restartButton.onClick.AddListener(RestartGame);
-        
-        recordImage.sprite = notRecordingSprite;
-        scoreSlider.value = 0;
     }
 
     public void OnToggle()
     {
-        if (whisperToggle.isOn)
+        if (whisperToggle != null && azureToggle != null)
         {
-            sttType = STTType.Whisper;
-        }
-        else if (azureToggle.isOn)
-        {
-            sttType = STTType.Azure;
+            sttType = whisperToggle.isOn ? STTType.Whisper : STTType.Azure;
         }
 
-        if (levenshteinToggle.isOn)
+        if (levenshteinToggle != null && simpleCharacterDifferenceToggle != null)
         {
-            calculationType = CalculationType.Levenshtein;
+            calculationType = levenshteinToggle.isOn ? CalculationType.Levenshtein : CalculationType.SimpleCharacterDifference;
         }
-        else if (simpleCharacterDifferenceToggle.isOn)
+        
+        if (phonemeToggle != null && syllableToggle != null)
         {
-            calculationType = CalculationType.SimpleCharacterDifference;
-        }
-
-        if (phonemeToggle.isOn)
-        {
-            stringCompareType = StringCompareType.Phoneme;
-        }
-        else if (syllableToggle.isOn)
-        {
-            stringCompareType = StringCompareType.Syllable;
+            stringCompareType = phonemeToggle.isOn ? StringCompareType.Phoneme : StringCompareType.Syllable;
         }
     }
     private void SetNewQuestion()
@@ -125,49 +115,48 @@ public class DecisionSystem : MonoBehaviour
         questionText.text = answerString;
     }
 
+    //API related functions ==================================================================================
     private void StartRecording()
     {
-        SetToStartRecording();
+        SetRecordingState(true);
 
         if (sttType == STTType.Whisper)
         {
             azureSTT.IsEnabled = false;
-            microphoneRecorder.StartRecording();
+            microphoneRecorder.StartRecording(); //STT 녹음 시작
             microphoneRecorder.transcriptionCompleteCallback -= OnTranscriptionComplete;
             microphoneRecorder.transcriptionCompleteCallback += OnTranscriptionComplete;
         }
         else
         {
             azureSTT.IsEnabled = true;
-            azureSTT.RecognizeSpeech();
+            azureSTT.RecognizeSpeech(); //Azure 녹음 시작
         }
     }
-
-    private void SetToStartRecording()
+    private void StopRecording()
     {
-        isRecording = true;
-        recordImage.sprite = recordingSprite;
-    }
-    private void SetToStopRecording()
-    {
-        isRecording = false;
-        recordImage.sprite = notRecordingSprite;
-    }
-    private void StopRecordingWhisper()
-    {
-        SetToStopRecording();
-
+        SetRecordingState(false);
+        
+        //@note: Azure는 자동 녹음 일시 중지 됨. 
         if (sttType == STTType.Whisper)
         {
-            microphoneRecorder.StopRecording();
+            microphoneRecorder.StopRecording(); //STT 녹음 중지
         }
+    }
+    //API related functions end ===============================================================================
+
+    private void SetRecordingState(bool isRecording)
+    {
+        this.isRecording = isRecording;
+        recordImage.sprite = isRecording ? recordingSprite : notRecordingSprite;
     }
 
     private void OnTranscriptionComplete(string inTranscribedString)
     {
+        //@note: Azure는 자동 녹음 일시 중지 되지만 이미지 및 상태만 변경 필요. 
         if (sttType == STTType.Azure)
         {
-            SetToStopRecording();
+            SetRecordingState(false);
         }
 
         if (stringCompareType == StringCompareType.Phoneme)
@@ -176,28 +165,29 @@ public class DecisionSystem : MonoBehaviour
             answerString = DecomposeKoreanToPhonemes(answerString);
         }
         
-        int distance = 0;
-        if (calculationType == CalculationType.Levenshtein)
-        {
-            distance = LevenshteinDistance(inTranscribedString, answerString);
-        }
-        else if (calculationType == CalculationType.SimpleCharacterDifference)
-        {
-            distance = SimpleCharacterDifference(inTranscribedString, answerString);
-        }
-        
+        // Perform selected comparison
+        int distance = calculationType == CalculationType.Levenshtein ?
+            LevenshteinDistance(inTranscribedString, answerString) :
+            SimpleCharacterDifference(inTranscribedString, answerString);
+
+        UpdateScore(distance);
+    }
+
+    private void UpdateScore(int distance)
+    {
         int score = Mathf.Max(0, perfectOneRoundScore - distance);
         scoreText.text = score.ToString();
         float newTotalScore = totalScore + score;
-        
+
         StartCoroutine(UpdateSliderValueOverTime(totalScore, newTotalScore, 1f));
-        
         totalScore = newTotalScore;
-        if (totalScore > finalScore)
+
+        if (totalScore >= finalScore)
         {
             EndGame();
         }
     }
+
 
     private string DecomposeKoreanToPhonemes(string input)
     {
