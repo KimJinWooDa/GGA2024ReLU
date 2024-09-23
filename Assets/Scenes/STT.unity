@@ -650,7 +650,19 @@ MonoBehaviour:
   m_Group: {fileID: 1308371919}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 999016455}
+        m_TargetAssemblyTypeName: DecisionSystem, Assembly-CSharp
+        m_MethodName: OnToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &109129105
 GameObject:
@@ -3896,6 +3908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e9fdb7197219c4282077ef8e359906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WhisperModelSetting: 1
   questionText: {fileID: 317646772}
   newQuestionButton: {fileID: 277521834}
   recordButton: {fileID: 1892117909}
@@ -3911,6 +3924,7 @@ MonoBehaviour:
   perfectOneRoundScore: 100
   finalScore: 1000
   microphoneRecorder: {fileID: 176369104}
+  runWhisper: {fileID: 732537745}
   azureSTT: {fileID: 1885475297}
   answerBook:
   - "\uACE0\uC591\uC774\uB294 \uCC3D\uBC16\uC744 \uBC14\uB77C\uBCF4\uBA70 \uD587\uC0B4\uC744
@@ -3942,7 +3956,7 @@ MonoBehaviour:
   whisperModelObject: {fileID: 1308371915}
   tiny: {fileID: 1485901957}
   medium: {fileID: 100527648}
-  large: {fileID: 1162100877}
+  _base: {fileID: 1162100877}
 --- !u!4 &999016456
 Transform:
   m_ObjectHideFlags: 0
@@ -4576,7 +4590,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Large
+  m_Text: Base
 --- !u!222 &1159942731
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4596,7 +4610,7 @@ GameObject:
   - component: {fileID: 1162100876}
   - component: {fileID: 1162100877}
   m_Layer: 5
-  m_Name: Large
+  m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4669,7 +4683,19 @@ MonoBehaviour:
   m_Group: {fileID: 1308371919}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 999016455}
+        m_TargetAssemblyTypeName: DecisionSystem, Assembly-CSharp
+        m_MethodName: OnToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &1218098690
 GameObject:
@@ -5525,7 +5551,19 @@ MonoBehaviour:
   m_Group: {fileID: 1308371919}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 999016455}
+        m_TargetAssemblyTypeName: DecisionSystem, Assembly-CSharp
+        m_MethodName: OnToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1626462540
 GameObject:

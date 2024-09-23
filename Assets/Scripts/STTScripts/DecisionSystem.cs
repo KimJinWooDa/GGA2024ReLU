@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class DecisionSystem : MonoBehaviour
 {
+    //설정 가능한 변수들   
+    [SerializeField] private WhisperModel WhisperModelSetting = WhisperModel.Tiny;
+    
     //UI 요소들 
     [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private UnityEngine.UI.Button newQuestionButton;
@@ -29,6 +32,7 @@ public class DecisionSystem : MonoBehaviour
     
     //STT, 음성인식, 비교 관련
     [SerializeField] private MicrophoneRecorder microphoneRecorder;
+    [SerializeField] private RunWhisper runWhisper;
     [SerializeField] private AzureSTT azureSTT;
     [SerializeField] private List<string> answerBook = new List<string>();
 
@@ -43,17 +47,19 @@ public class DecisionSystem : MonoBehaviour
     [SerializeField] private GameObject whisperModelObject;
     [SerializeField] private Toggle tiny;
     [SerializeField] private Toggle medium;
-    [SerializeField] private Toggle large;
+    [SerializeField] private Toggle _base;
     
     // Enum definitions for STT, comparison, and string comparison types
     private enum STTType { Whisper, Azure }
     private enum CalculationType { Levenshtein, SimpleCharacterDifference }
     private enum StringCompareType { Phoneme, Syllable }
+    public enum WhisperModel { Tiny, Medium, Base }
     
     // Current settings
     private STTType sttType = STTType.Whisper;
     private CalculationType calculationType = CalculationType.SimpleCharacterDifference;
     private StringCompareType stringCompareType = StringCompareType.Syllable;
+    private WhisperModel whisperModel = WhisperModel.Tiny;
     
     //현재 게임 상태 
     private bool isRecording = false;
@@ -62,6 +68,19 @@ public class DecisionSystem : MonoBehaviour
     private const string isMove = "IsMove";
     private void Start()
     {
+        whisperModel = WhisperModelSetting; //get whisper model from inspector first
+        if (whisperModel == WhisperModel.Tiny)
+        {
+            tiny.isOn = true;
+        }
+        else if (whisperModel == WhisperModel.Medium)
+        {
+            medium.isOn = true;
+        }
+        else if (whisperModel == WhisperModel.Base)
+        {
+            _base.isOn = true;
+        }
         InitializeGame();
         SetupUIListeners();
     }
@@ -103,6 +122,24 @@ public class DecisionSystem : MonoBehaviour
         if (whisperToggle != null && azureToggle != null)
         {
             sttType = whisperToggle.isOn ? STTType.Whisper : STTType.Azure;
+
+            if (whisperToggle.isOn)
+            {
+                if (tiny.isOn)
+                {
+                    whisperModel = WhisperModel.Tiny;
+                }
+                else if (medium.isOn)
+                {
+                    whisperModel = WhisperModel.Medium;
+                }
+                else if (_base.isOn)
+                {
+                    whisperModel = WhisperModel.Base;
+                }
+                runWhisper.ReloadModel(whisperModel);
+            }
+            
         }
 
         if (levenshteinToggle != null && simpleCharacterDifferenceToggle != null)
@@ -128,19 +165,8 @@ public class DecisionSystem : MonoBehaviour
 
         if (sttType == STTType.Whisper)
         {
+            Debug.Log($"Selected Whisper Model: {whisperModel}");
             azureSTT.IsEnabled = false;
-            if (tiny.isOn)
-            {
-                
-            }
-            else if (medium.isOn)
-            {
-                
-            }
-            else if (large.isOn)
-            {
-                
-            }
             microphoneRecorder.StartRecording(); //STT 녹음 시작
             microphoneRecorder.transcriptionCompleteCallback -= OnTranscriptionComplete;
             microphoneRecorder.transcriptionCompleteCallback += OnTranscriptionComplete;

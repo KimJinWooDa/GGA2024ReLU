@@ -55,12 +55,47 @@ public class RunWhisper : MonoBehaviour
         GetTokens();
 
         // ?? ???
-        Model decoder = ModelLoader.Load(Application.streamingAssetsPath + "/AudioDecoder_Tiny.sentis");
+        Model decoder = ModelLoader.Load(Application.streamingAssetsPath + "/AudioDecoder_Tiny.sentis"); //flag
         Model decoderWithArgMax = Functional.Compile(
             (tokens, audio) => Functional.ArgMax(decoder.Forward(tokens, audio)[0], 2),
             (decoder.inputs[0], decoder.inputs[1])
         );
-        Model encoder = ModelLoader.Load(Application.streamingAssetsPath + "/AudioEncoder_Tiny.sentis");
+        Model encoder = ModelLoader.Load(Application.streamingAssetsPath + "/AudioEncoder_Tiny.sentis"); //flag
+        Model spectro = ModelLoader.Load(Application.streamingAssetsPath + "/LogMelSepctro.sentis");
+
+        // ?? ???
+        decoderEngine = WorkerFactory.CreateWorker(backend, decoderWithArgMax);
+        encoderEngine = WorkerFactory.CreateWorker(backend, encoder);
+        spectroEngine = WorkerFactory.CreateWorker(backend, spectro);
+    }
+
+    public void ReloadModel(DecisionSystem.WhisperModel inModel)
+    {
+        decoderEngine?.Dispose();
+        encoderEngine?.Dispose();
+        spectroEngine?.Dispose();
+        
+        Model decoder = ModelLoader.Load(Application.streamingAssetsPath + "/AudioDecoder_Tiny.sentis"); //flag
+        Model encoder = ModelLoader.Load(Application.streamingAssetsPath + "/AudioEncoder_Tiny.sentis"); //flag
+        switch (inModel)
+        {
+            case DecisionSystem.WhisperModel.Tiny:
+                decoder = ModelLoader.Load(Application.streamingAssetsPath + "/AudioDecoder_Tiny.sentis"); //flag
+                encoder = ModelLoader.Load(Application.streamingAssetsPath + "/AudioEncoder_Tiny.sentis"); //flag
+                break;
+            case DecisionSystem.WhisperModel.Medium:
+                decoder = ModelLoader.Load(Application.streamingAssetsPath + "/AudioDecoder_Medium.sentis"); //flag
+                encoder = ModelLoader.Load(Application.streamingAssetsPath + "/AudioEncoder_Medium.sentis"); //flag
+                break;
+            case DecisionSystem.WhisperModel.Base:
+                decoder = ModelLoader.Load(Application.streamingAssetsPath + "/AudioDecoder_Base.sentis"); //flag
+                encoder = ModelLoader.Load(Application.streamingAssetsPath + "/AudioEncoder_Base.sentis"); //flag
+                break;
+        }
+        Model decoderWithArgMax = Functional.Compile(
+            (tokens, audio) => Functional.ArgMax(decoder.Forward(tokens, audio)[0], 2),
+            (decoder.inputs[0], decoder.inputs[1])
+        );
         Model spectro = ModelLoader.Load(Application.streamingAssetsPath + "/LogMelSepctro.sentis");
 
         // ?? ???
