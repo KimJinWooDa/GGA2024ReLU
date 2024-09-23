@@ -14,16 +14,16 @@
 
 ### TODO
 
-- [] Local STT / Azure 선택 기능 적용
-- [] 자모 분리 기능 적용
-- [] 자모 분리 선택 기능 적용
-- [] Levenshtein 점수 측정 기능
-- [] Levenshtein Distance / strcmp 선택 기능 추가
-- [] Whisper 모델 업그레이드
-- [] Phi 모델 업그레이드
-- [] Claude Prompt Engineering (캐릭터성 부여)
-- [] Claude Prompt Engineering (json 포맷팅)
-- [] Font 깨짐 이슈 해결
+- [ ] Local STT / Azure 선택 기능 적용
+- [ ] 자모 분리 기능 적용
+- [ ] 자모 분리 선택 기능 적용
+- [ ] Levenshtein 점수 측정 기능
+- [ ] Levenshtein Distance / strcmp 선택 기능 추가
+- [ ] Whisper 모델 업그레이드
+- [ ] Phi 모델 업그레이드
+- [ ] Claude Prompt Engineering (캐릭터성 부여)
+- [ ] Claude Prompt Engineering (json 포맷팅)
+- [ ] Font 깨짐 이슈 해결
 
 ***
 
