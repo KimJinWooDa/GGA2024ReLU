@@ -83,7 +83,8 @@ public class DecisionSystem : MonoBehaviour
 
     private void OnTranscriptionComplete(string inTranscribedString)
     {
-        int score = Mathf.Max(0, perfectOneRoundScore - SimpleCharacterDifference(inTranscribedString, answerString));
+        int distance = LevenshteinDistance(inTranscribedString, answerString);
+        int score = Mathf.Max(0, perfectOneRoundScore - distance);
         scoreText.text = score.ToString();
         float newTotalScore = totalScore + score;
         
@@ -95,7 +96,6 @@ public class DecisionSystem : MonoBehaviour
             EndGame();
         }
     }
-
     private void EndGame()
     {
         endGamePanel.gameObject.SetActive(true);
@@ -130,4 +130,36 @@ public class DecisionSystem : MonoBehaviour
 
         return difference;
     }
+    
+    private int LevenshteinDistance(string a, string b)
+    {
+        int[,] matrix = new int[a.Length + 1, b.Length + 1];
+
+        for (int i = 0; i <= a.Length; i++)
+        {
+            matrix[i, 0] = i;
+        }
+
+        for (int j = 0; j <= b.Length; j++)
+        {
+            matrix[0, j] = j;
+        }
+
+        for (int i = 1; i <= a.Length; i++)
+        {
+            for (int j = 1; j <= b.Length; j++)
+            {
+                int cost = (a[i - 1] == b[j - 1]) ? 0 : 1;
+
+                matrix[i, j] = Mathf.Min(
+                    matrix[i - 1, j] + 1,        // deletion
+                    matrix[i, j - 1] + 1,        // insertion
+                    matrix[i - 1, j - 1] + cost  // substitution
+                );
+            }
+        }
+
+        return matrix[a.Length, b.Length];
+    }
+
 }
