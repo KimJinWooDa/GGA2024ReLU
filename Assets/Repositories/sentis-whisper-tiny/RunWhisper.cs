@@ -48,6 +48,8 @@ public class RunWhisper : MonoBehaviour
 
     // ?????? ?? ??
     private Action<string> transcriptionCompleteCallback;
+    
+    private Dictionary<int, string> vocab;
 
     // ?? ???? Start?? ??
     void Start()
@@ -72,9 +74,12 @@ public class RunWhisper : MonoBehaviour
             kvp => kvp.Value,
             kvp => kvp.Key // Base64
         );
+        
+        //vocab dictionary to be saved and used in decoding elsewhere 
+        vocab = d.ToDictionary(entry => entry.Key, entry => entry.Value);
 
         List<byte[]> decodedBytesList = new List<byte[]>();
-        int[] values = { 13499, 5500, 255, 19556, 9040, 14886, 14886, 2429, 30616, 1235 };
+        int[] values = { 45326, 120, 4815, 48267, 1517, 15933, 250, 119, 3049 }; // == ID 
         foreach (int v in values)
         {
             if (d.ContainsKey(v))
@@ -237,12 +242,49 @@ public class RunWhisper : MonoBehaviour
             else
             {
                 Debug.Log($"token[ID]={tokens[ID]}");
-                outputString += GetUnicodeText(tokens[ID]);
+                //outputString += GetUnicodeText(tokens[ID]);
+                outputString += DecodeID(ID);
             }
 
             Debug.Log(outputString);
             Debug.Log(string.Join(", ", outputTokens));
         }
+    }
+
+    private string DecodeID(int id)
+    {
+        byte[] decodedBytes = new byte[] { };
+        int[] values = { 13499, 5500, 255, 19556, 9040, 14886, 14886, 2429, 30616, 1235 }; // == ID 
+        if (vocab.ContainsKey(id))
+        {
+            string base64String = vocab[id];
+            try
+            {
+                decodedBytes = Convert.FromBase64String(base64String);
+            }
+            catch (FormatException ex)
+            {
+                Debug.LogWarning($"Warning: Error decoding Base64 for value {id}: {ex.Message}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"Warning: Value {id} not found in the dictionary.");
+        }
+
+        Debug.Log("Byte Array: " + BitConverter.ToString(decodedBytes));
+        string decodedString = string.Empty;
+        try
+        {
+            decodedString = System.Text.Encoding.UTF8.GetString(decodedBytes);
+            Debug.Log("Decoded String: " + decodedString);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error decoding bytes to UTF-8: " + ex.Message);
+        }
+
+        return decodedString;
     }
 
     // ?? ??? ????? ??
