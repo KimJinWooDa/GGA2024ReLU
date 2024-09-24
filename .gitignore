@@ -71,6 +71,16 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+# Large sentis files
+/[Aa]ssets/[Ss]treamingAssets/AudioDecoder_Base.sentis
+/[Aa]ssets/[Ss]treamingAssets/AudioDecoder_Base.sentis.meta
+/[Aa]ssets/[Ss]treamingAssets/AudioEncoder_Base.sentis
+/[Aa]ssets/[Ss]treamingAssets/AudioEncoder_Base.sentis.meta
+/[Aa]ssets/[Ss]treamingAssets/AudioDecoder_Medium.sentis
+/[Aa]ssets/[Ss]treamingAssets/AudioDecoder_Medium.sentis.meta
+/[Aa]ssets/[Ss]treamingAssets/AudioEncoder_Medium.sentis
+/[Aa]ssets/[Ss]treamingAssets/AudioEncoder_Medium.sentis.meta
+
 **/phi15.sentis
 .DS_Store
 .vsconfig
