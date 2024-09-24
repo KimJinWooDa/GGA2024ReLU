@@ -264,12 +264,12 @@ public class DecisionSystem : MonoBehaviour
             LevenshteinDistance(inTranscribedString, answerString) :
             SimpleCharacterDifference(inTranscribedString, answerString);
 
-        UpdateScore(distance);
+        UpdateScore(distance, inTranscribedString.Length);
     }
 
-    private void UpdateScore(int distance)
+    private void UpdateScore(int distance, int totalCharacters)
     {
-        int score = Mathf.Max(0, perfectOneRoundScore - distance);
+        int score = (int)(((float)(totalCharacters - distance) / totalCharacters) * 100);
         scoreText.text = score.ToString();
         float newTotalScore = totalScore + score;
 
