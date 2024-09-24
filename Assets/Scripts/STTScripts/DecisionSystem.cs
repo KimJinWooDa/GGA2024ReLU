@@ -8,7 +8,11 @@ using UnityEngine.UI;
 public class DecisionSystem : MonoBehaviour
 {
     //설정 가능한 변수들   
+    [Header("Settings to calculate the score")]
+    [SerializeField] private STTType STTTypeSetting = STTType.Whisper;
     [SerializeField] private WhisperModel WhisperModelSetting = WhisperModel.Tiny;
+    [SerializeField] private CalculationType CalculationTypeSetting = CalculationType.SimpleCharacterDifference;
+    [SerializeField] private StringCompareType StringCompareTypeSetting = StringCompareType.Syllable;
     
     //UI 요소들 
     [SerializeField] private TextMeshProUGUI questionText;
@@ -45,9 +49,9 @@ public class DecisionSystem : MonoBehaviour
     [SerializeField] private Toggle syllableToggle;
     //Whister관련 추가 toggle
     [SerializeField] private GameObject whisperModelObject;
-    [SerializeField] private Toggle tiny;
-    [SerializeField] private Toggle medium;
-    [SerializeField] private Toggle _base;
+    [FormerlySerializedAs("tiny")] [SerializeField] private Toggle tinyModel;
+    [FormerlySerializedAs("medium")] [SerializeField] private Toggle mediumModel;
+    [FormerlySerializedAs("_base")] [SerializeField] private Toggle baseModel;
     
     // Enum definitions for STT, comparison, and string comparison types
     private enum STTType { Whisper, Azure }
@@ -68,21 +72,53 @@ public class DecisionSystem : MonoBehaviour
     private const string isMove = "IsMove";
     private void Start()
     {
-        whisperModel = WhisperModelSetting; //get whisper model from inspector first
+        GetInspectorSettings();
+        InitializeGame();
+        SetupUIListeners();
+    }
+
+    private void GetInspectorSettings()
+    {
+        sttType = STTTypeSetting;
+        if (sttType == STTType.Whisper)
+        {
+            whisperToggle.isOn = true;
+        }
+        else if (sttType == STTType.Azure)
+        {
+            azureToggle.isOn = true;
+        }
+        calculationType = CalculationTypeSetting; 
+        if (calculationType == CalculationType.Levenshtein)
+        {
+            levenshteinToggle.isOn = true;
+        }
+        else if (calculationType == CalculationType.SimpleCharacterDifference)
+        {
+            simpleCharacterDifferenceToggle.isOn = true;
+        }
+        stringCompareType = StringCompareTypeSetting; 
+        if (stringCompareType == StringCompareType.Phoneme)
+        {
+            phonemeToggle.isOn = true;
+        }
+        else if (stringCompareType == StringCompareType.Syllable)
+        {
+            syllableToggle.isOn = true;
+        }
+        whisperModel = WhisperModelSetting; 
         if (whisperModel == WhisperModel.Tiny)
         {
-            tiny.isOn = true;
+            tinyModel.isOn = true;
         }
         else if (whisperModel == WhisperModel.Medium)
         {
-            medium.isOn = true;
+            mediumModel.isOn = true;
         }
         else if (whisperModel == WhisperModel.Base)
         {
-            _base.isOn = true;
+            baseModel.isOn = true;
         }
-        InitializeGame();
-        SetupUIListeners();
     }
 
     private void InitializeGame()
@@ -125,7 +161,7 @@ public class DecisionSystem : MonoBehaviour
 
             if (whisperToggle.isOn)
             {
-                if (tiny.isOn)
+                if (tinyModel.isOn)
                 {
                     if (whisperModel != WhisperModel.Tiny)
                     {
@@ -133,7 +169,7 @@ public class DecisionSystem : MonoBehaviour
                         runWhisper.ReloadModel(whisperModel);
                     }
                 }
-                else if (medium.isOn)
+                else if (mediumModel.isOn)
                 {
                     if (whisperModel != WhisperModel.Medium)
                     {
@@ -141,7 +177,7 @@ public class DecisionSystem : MonoBehaviour
                         runWhisper.ReloadModel(whisperModel);
                     }
                 }
-                else if (_base.isOn)
+                else if (baseModel.isOn)
                 {
                     if (whisperModel != WhisperModel.Base)
                     {
@@ -149,7 +185,6 @@ public class DecisionSystem : MonoBehaviour
                         runWhisper.ReloadModel(whisperModel);
                     }
                 }
-                //runWhisper.ReloadModel(whisperModel);
             }
             
         }
