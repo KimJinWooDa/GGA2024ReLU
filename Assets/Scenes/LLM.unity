@@ -815,6 +815,10 @@ PrefabInstance:
         was eager to relax a little bit. \nWith a glass of cocktail in his hand,
         he put his headphones on, missing the cry for help from Mr. Finance. "
       objectReference: {fileID: 0}
+    - target: {fileID: 4806784428629027866, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4872027149905586507, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2260,6 +2264,10 @@ PrefabInstance:
         husband asked for rescue as soon as he jumped in the pool. She, knowing how
         to swim, jumped in to save him. \nShe was wearing a ruby necklace she got
         as her anniversary gift and were planning on spending 2 more weeks in Cabo. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806784428629027866, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4872027149905586507, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Sprite
@@ -3755,6 +3763,10 @@ PrefabInstance:
         ruby necklate in the water, and a video by Mrs. Finance shows her husband
         swimming while Kyle is trying to fetch the floating ruby. \nKyle was a rescue
         dog. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806784428629027866, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4872027149905586507, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Sprite
