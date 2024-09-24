@@ -57,6 +57,57 @@ public class RunWhisper : MonoBehaviour
 
         // ?? ???
         //@note: no default reload to avoid conflict with decisionsystem's reload 
+
+        string vocabPath = Application.streamingAssetsPath + "/multilingual.tiktoken";
+
+        Dictionary<string, int> ranks = File.ReadLines(vocabPath)
+            .Where(line => !string.IsNullOrWhiteSpace(line))
+            .Select(line => line.Split())
+            .ToDictionary(
+                split => split[0], // Base64 
+                split => int.Parse(split[1])
+            );
+
+        Dictionary<int, string> d = ranks.ToDictionary(
+            kvp => kvp.Value,
+            kvp => kvp.Key // Base64
+        );
+
+        List<byte[]> decodedBytesList = new List<byte[]>();
+        int[] values = { 13499, 5500, 255, 19556, 9040, 14886, 14886, 2429, 30616, 1235 };
+        foreach (int v in values)
+        {
+            if (d.ContainsKey(v))
+            {
+                string base64String = d[v];
+                try
+                {
+                    byte[] decodedBytes = Convert.FromBase64String(base64String);
+                    decodedBytesList.Add(decodedBytes);
+                }
+                catch (FormatException ex)
+                {
+                    Debug.LogWarning($"Warning: Error decoding Base64 for value {v}: {ex.Message}");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"Warning: Value {v} not found in the dictionary.");
+            }
+        }
+
+        byte[] resultBytes = decodedBytesList.SelectMany(b => b).ToArray();
+
+        Debug.Log("Byte Array: " + BitConverter.ToString(resultBytes));
+        try
+        {
+            string decodedString = System.Text.Encoding.UTF8.GetString(resultBytes);
+            Debug.Log("Decoded String: " + decodedString);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error decoding bytes to UTF-8: " + ex.Message);
+        }
     }
 
     public void ReloadModel(DecisionSystem.WhisperModel inModel)
@@ -93,62 +144,6 @@ public class RunWhisper : MonoBehaviour
         encoderEngine = WorkerFactory.CreateWorker(backend, encoder);
         spectroEngine = WorkerFactory.CreateWorker(backend, spectro);
 
-        string vocabPath = Application.streamingAssetsPath + "/multilingual.tiktoken";
-
-        // ������ �а�, Base64 ���ڿ��� Ű�� ����Ͽ� token�� int�� ��ȯ
-        Dictionary<string, int> ranks = File.ReadLines(vocabPath)
-            .Where(line => !string.IsNullOrWhiteSpace(line))
-            .Select(line => line.Split())
-            .ToDictionary(
-                split => split[0], // Base64 ���ڿ��� �״�� ���
-                split => int.Parse(split[1])
-            );
-
-        // ranks�� Ű�� ���� �ݴ�� �ؼ� ���ο� Dictionary ����
-        Dictionary<int, string> d = ranks.ToDictionary(
-            kvp => kvp.Value,
-            kvp => kvp.Key // Base64 ���ڿ��� ������ ���
-        );
-
-        // �־��� int �迭�� ����Ͽ� Base64 ���ڿ� ����Ʈ ����
-        List<byte[]> decodedBytesList = new List<byte[]>();
-        int[] values = { 13499, 5500, 255, 19556, 9040, 14886, 14886, 2429, 30616, 1235 };
-        foreach (int v in values)
-        {
-            if (d.ContainsKey(v))
-            {
-                // Base64 ���ڿ��� ���������� ���ڵ��Ͽ� ����Ʈ �迭�� ��ȯ
-                string base64String = d[v];
-                try
-                {
-                    byte[] decodedBytes = Convert.FromBase64String(base64String);
-                    decodedBytesList.Add(decodedBytes);
-                }
-                catch (FormatException ex)
-                {
-                    Debug.LogWarning($"Warning: Error decoding Base64 for value {v}: {ex.Message}");
-                }
-            }
-            else
-            {
-                Debug.LogWarning($"Warning: Value {v} not found in the dictionary.");
-            }
-        }
-
-        // ���������� ���ڵ��� ����Ʈ �迭�� �ϳ��� ��ħ
-        byte[] resultBytes = decodedBytesList.SelectMany(b => b).ToArray();
-
-        // ��� ��� (����Ʈ �迭�� UTF-8�� ���ڵ��� ���ڿ�)
-        Debug.Log("Byte Array: " + BitConverter.ToString(resultBytes));
-        try
-        {
-            string decodedString = System.Text.Encoding.UTF8.GetString(resultBytes);
-            Debug.Log("Decoded String: " + decodedString);
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError("Error decoding bytes to UTF-8: " + ex.Message);
-        }
     }
 
     // ???? ??? ??? ?? ?????? ??
