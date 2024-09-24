@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Text;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class RunWhisper : MonoBehaviour
 {
@@ -91,6 +92,63 @@ public class RunWhisper : MonoBehaviour
         decoderEngine = WorkerFactory.CreateWorker(backend, decoderWithArgMax);
         encoderEngine = WorkerFactory.CreateWorker(backend, encoder);
         spectroEngine = WorkerFactory.CreateWorker(backend, spectro);
+
+        string vocabPath = Application.streamingAssetsPath + "/multilingual.tiktoken";
+
+        // ������ �а�, Base64 ���ڿ��� Ű�� ����Ͽ� token�� int�� ��ȯ
+        Dictionary<string, int> ranks = File.ReadLines(vocabPath)
+            .Where(line => !string.IsNullOrWhiteSpace(line))
+            .Select(line => line.Split())
+            .ToDictionary(
+                split => split[0], // Base64 ���ڿ��� �״�� ���
+                split => int.Parse(split[1])
+            );
+
+        // ranks�� Ű�� ���� �ݴ�� �ؼ� ���ο� Dictionary ����
+        Dictionary<int, string> d = ranks.ToDictionary(
+            kvp => kvp.Value,
+            kvp => kvp.Key // Base64 ���ڿ��� ������ ���
+        );
+
+        // �־��� int �迭�� ����Ͽ� Base64 ���ڿ� ����Ʈ ����
+        List<byte[]> decodedBytesList = new List<byte[]>();
+        int[] values = { 13499, 5500, 255, 19556, 9040, 14886, 14886, 2429, 30616, 1235 };
+        foreach (int v in values)
+        {
+            if (d.ContainsKey(v))
+            {
+                // Base64 ���ڿ��� ���������� ���ڵ��Ͽ� ����Ʈ �迭�� ��ȯ
+                string base64String = d[v];
+                try
+                {
+                    byte[] decodedBytes = Convert.FromBase64String(base64String);
+                    decodedBytesList.Add(decodedBytes);
+                }
+                catch (FormatException ex)
+                {
+                    Debug.LogWarning($"Warning: Error decoding Base64 for value {v}: {ex.Message}");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"Warning: Value {v} not found in the dictionary.");
+            }
+        }
+
+        // ���������� ���ڵ��� ����Ʈ �迭�� �ϳ��� ��ħ
+        byte[] resultBytes = decodedBytesList.SelectMany(b => b).ToArray();
+
+        // ��� ��� (����Ʈ �迭�� UTF-8�� ���ڵ��� ���ڿ�)
+        Debug.Log("Byte Array: " + BitConverter.ToString(resultBytes));
+        try
+        {
+            string decodedString = System.Text.Encoding.UTF8.GetString(resultBytes);
+            Debug.Log("Decoded String: " + decodedString);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error decoding bytes to UTF-8: " + ex.Message);
+        }
     }
 
     // ???? ??? ??? ?? ?????? ??
@@ -174,20 +232,21 @@ public class RunWhisper : MonoBehaviour
             if (ID == END_OF_TEXT)
             {
                 transcribe = false;
-
-                // ?????? ?? ? ?? ??
                 transcriptionCompleteCallback?.Invoke(outputString);
             }
             else if (ID >= tokens.Length)
             {
+                Debug.LogWarning($"Token ID {ID} is larger than {tokens.Length}");
                 outputString += $"(time={(ID - START_TIME) * 0.02f})";
             }
             else
             {
+                Debug.Log($"token[ID]={tokens[ID]}");
                 outputString += GetUnicodeText(tokens[ID]);
             }
 
             Debug.Log(outputString);
+            Debug.Log(string.Join(", ", outputTokens));
         }
     }
 
@@ -206,6 +265,7 @@ public class RunWhisper : MonoBehaviour
             outText += ((int)letter <= 256) ? letter :
                 (char)whiteSpaceCharacters[(int)(letter - 256)];
         }
+        Debug.Log("outText:" + string.Join(", ", outText));
         return outText;
     }
 
