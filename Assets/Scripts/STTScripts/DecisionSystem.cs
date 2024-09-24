@@ -127,17 +127,29 @@ public class DecisionSystem : MonoBehaviour
             {
                 if (tiny.isOn)
                 {
-                    whisperModel = WhisperModel.Tiny;
+                    if (whisperModel != WhisperModel.Tiny)
+                    {
+                        whisperModel = WhisperModel.Tiny;
+                        runWhisper.ReloadModel(whisperModel);
+                    }
                 }
                 else if (medium.isOn)
                 {
-                    whisperModel = WhisperModel.Medium;
+                    if (whisperModel != WhisperModel.Medium)
+                    {
+                        whisperModel = WhisperModel.Medium;
+                        runWhisper.ReloadModel(whisperModel);
+                    }
                 }
                 else if (_base.isOn)
                 {
-                    whisperModel = WhisperModel.Base;
+                    if (whisperModel != WhisperModel.Base)
+                    {
+                        whisperModel = WhisperModel.Base;
+                        runWhisper.ReloadModel(whisperModel);
+                    }
                 }
-                runWhisper.ReloadModel(whisperModel);
+                //runWhisper.ReloadModel(whisperModel);
             }
             
         }
