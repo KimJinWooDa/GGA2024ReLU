@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Profile : MonoBehaviour
 {
@@ -7,17 +8,19 @@ public class Profile : MonoBehaviour
     public bool IsSelected = false;
     
     [TextArea]
-    public string information;
-    public Sprite profileSprite;
+    public string InformationString;
+    public Sprite ProfileSprite;
+    public UnityEngine.UI.Button ProfileButton;
     
     [SerializeField] private GameObject selectedIndicator;
     [SerializeField] private UnityEngine.UI.Image profileImage;
-    [SerializeField] private UnityEngine.UI.Button profileButton;
     
-    private void Start()
+    
+    public void Initialize()
     {
-        profileImage.sprite = profileSprite;
-        profileButton.onClick.AddListener(() =>
+        profileImage.sprite = ProfileSprite;
+        ProfileButton.onClick.RemoveAllListeners();
+        ProfileButton.onClick.AddListener(() =>
         {
             OnSelected?.Invoke(this);
         });

@@ -178,14 +178,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.74213827, g: 0.025631795, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dea59446d37bf4c87ae4673bf0e906d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ab20d018976348b196e3d1370b667f6, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -287,11 +287,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsSelected: 0
-  selectedIndicator: {fileID: 0}
+  InformationString: 
+  ProfileSprite: {fileID: 0}
+  ProfileButton: {fileID: 237056809272160315}
+  selectedIndicator: {fileID: 4806784428629027866}
   profileImage: {fileID: 4872027149905586507}
-  profileSprite: {fileID: 0}
-  profileButton: {fileID: 0}
-  information: 
 --- !u!1 &8752171082892467323
 GameObject:
   m_ObjectHideFlags: 0

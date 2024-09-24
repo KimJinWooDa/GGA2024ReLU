@@ -345,7 +345,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 49}
+  m_AnchoredPosition: {x: 0, y: 61}
   m_SizeDelta: {x: 800, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &32466345
@@ -492,8 +492,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "A man was drowned whilst enjoying a vacation in Greece. He was on his
-    private yacht with his swim instructor, wife, and pet dog, Kyle. \nHe excitedly
+  m_text: "Mr. Finance was drowned whilst enjoying a vacation in Greece. He was on
+    his private yacht with his swim instructor, wife, and pet dog, Kyle. \nHe excitedly
     jumped into the sea, overjoyed he could finally swim thanks to all the swimming
     lessons and practices he had done at his own pool. \nHowever, he panicked shortly
     and yelled: \"This isn't what I expected!\" and frantically screamed for help.
@@ -615,8 +615,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -455, y: 200}
-  m_SizeDelta: {x: 800, y: 400}
+  m_AnchoredPosition: {x: -455, y: 225}
+  m_SizeDelta: {x: 800, y: 450}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &408331881
 MonoBehaviour:
@@ -798,13 +798,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1060613918}
     m_Modifications:
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: ProfileSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f423f18bae754a7dbae893a08d00eef, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: profileSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f423f18bae754a7dbae893a08d00eef, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: InformationString
+      value: "Name: Henry \nAge: 35\nOccupation: Swim Instructor\nRelation to victim:
+        instructor\n\nHenry was chilling on the second story of the victim's yacht.
+        The victim told him to relax since he was confident he could swim without
+        any help. \nBecause he attended an exhausting party the night before, he
+        was eager to relax a little bit. \nWith a glass of cocktail in his hand,
+        he put his headphones on, missing the cry for help from Mr. Finance. "
+      objectReference: {fileID: 0}
     - target: {fileID: 4872027149905586507, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3f423f18bae754a7dbae893a08d00eef, type: 3}
     - target: {fileID: 7400840336766489238, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Name
-      value: Profile (1)
+      value: Henry
       objectReference: {fileID: 0}
     - target: {fileID: 8862955690504552892, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Pivot.x
@@ -896,6 +913,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8862955690504552892, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
   m_PrefabInstance: {fileID: 455096528}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &455096532 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+  m_PrefabInstance: {fileID: 455096528}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda2e9feb45857543b26677127d5d3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &486409261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,6 +1246,7 @@ RectTransform:
   m_Children:
   - {fileID: 1576881683}
   - {fileID: 923591167}
+  - {fileID: 677938135}
   - {fileID: 1302541746}
   - {fileID: 875677600}
   - {fileID: 2088040780}
@@ -1364,6 +1393,138 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 662403813}
   m_CullTransparentMesh: 1
+--- !u!1 &677938134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 677938135}
+  - component: {fileID: 677938138}
+  - component: {fileID: 677938137}
+  - component: {fileID: 677938136}
+  m_Layer: 5
+  m_Name: BackgroundOpenButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &677938135
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677938134}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 530187920}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 883, y: 458}
+  m_SizeDelta: {x: 80, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &677938136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677938134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 677938137}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1302541745}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &677938137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677938134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 1681cd1c1893a48cb9f2bea5bbb8bece, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &677938138
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677938134}
+  m_CullTransparentMesh: 1
 --- !u!1 &680664694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1605,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 4, y: -4}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &722089368
 MonoBehaviour:
@@ -1897,7 +2058,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 533}
+  m_AnchoredPosition: {x: 0, y: 576}
   m_SizeDelta: {x: 450, y: 150}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1060613919
@@ -1989,6 +2150,7 @@ GameObject:
   - component: {fileID: 1184748590}
   - component: {fileID: 1184748592}
   - component: {fileID: 1184748591}
+  - component: {fileID: 1184748593}
   m_Layer: 5
   m_Name: InformationPanel
   m_TagString: Untagged
@@ -2017,7 +2179,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 400}
+  m_SizeDelta: {x: 0, y: 450}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1184748591
 MonoBehaviour:
@@ -2057,6 +2219,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184748589}
   m_CullTransparentMesh: 1
+--- !u!114 &1184748593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184748589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fddbd7907c6355c4a9693cd0848c1ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profiles:
+  - {fileID: 1222425199}
+  - {fileID: 455096532}
+  - {fileID: 1897803730}
+  profileImage: {fileID: 1010658816}
+  informationText: {fileID: 1431094463}
 --- !u!1001 &1222425195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2065,6 +2245,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1060613918}
     m_Modifications:
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: ProfileSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ee6c8f37bd0f143a89513cadc662c0b0, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: profileSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ee6c8f37bd0f143a89513cadc662c0b0, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: InformationString
+      value: "Name: Mrs. Finance\nAge: 40\nOccupation: Surgeon\nRelation to victim:
+        wife\n\nShe was swimming with the victim while they were on vacation. The
+        husband asked for rescue as soon as he jumped in the pool. She, knowing how
+        to swim, jumped in to save him. \nShe was wearing a ruby necklace she got
+        as her anniversary gift and were planning on spending 2 more weeks in Cabo. "
+      objectReference: {fileID: 0}
     - target: {fileID: 4872027149905586507, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2163,6 +2359,165 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8862955690504552892, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
   m_PrefabInstance: {fileID: 1222425195}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1222425199 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+  m_PrefabInstance: {fileID: 1222425195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda2e9feb45857543b26677127d5d3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1237844948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1237844949}
+  - component: {fileID: 1237844952}
+  - component: {fileID: 1237844951}
+  - component: {fileID: 1237844950}
+  - component: {fileID: 1237844953}
+  m_Layer: 5
+  m_Name: Exit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1237844949
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237844948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1302541746}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -38, y: -36}
+  m_SizeDelta: {x: 30, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1237844950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237844948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1237844951}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1302541745}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1237844951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237844948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.61006284, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 2ec8157697636482abade791a079b6a1, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1237844952
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237844948}
+  m_CullTransparentMesh: 1
+--- !u!114 &1237844953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237844948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 2, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1243200846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2308,7 +2663,6 @@ GameObject:
   - component: {fileID: 1302541746}
   - component: {fileID: 1302541748}
   - component: {fileID: 1302541747}
-  - component: {fileID: 1302541749}
   m_Layer: 5
   m_Name: BackstoryPanel
   m_TagString: Untagged
@@ -2330,11 +2684,12 @@ RectTransform:
   m_Children:
   - {fileID: 419580104}
   - {fileID: 51963431}
+  - {fileID: 1237844949}
   m_Father: {fileID: 530187920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -27, y: -28}
+  m_AnchoredPosition: {x: -25, y: -10}
   m_SizeDelta: {x: 500, y: 600}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1302541747
@@ -2350,14 +2705,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.28627452, g: 0.16470589, b: 0.08627451, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6e3f793ca132f4716ae320a302d76c97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8618db974c2d8471f8d4fbeec0f3697a, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2375,21 +2730,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302541745}
   m_CullTransparentMesh: 1
---- !u!114 &1302541749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1302541745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 2, y: 2}
-  m_UseGraphicAlpha: 1
 --- !u!1 &1328582780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2901,7 +3241,7 @@ GameObject:
   - component: {fileID: 1431094464}
   - component: {fileID: 1431094463}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: InformationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2924,7 +3264,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 330}
+  m_SizeDelta: {x: 0, y: 380}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1431094463
 MonoBehaviour:
@@ -2946,11 +3286,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Age: 40\nOccupation: Surgeon\nRelation to victim: wife\n\nShe was swimming
-    with the victim while they were on vacation. The husband asked for rescue as
-    soon as he jumped in the pool. She, knowing how to swim, jumped in to save him.
-    \nShe was wearing a ruby necklace she got as her anniversary gift and were planning
-    on spending 2 more weeks in Cabo. "
+  m_text: "Name: Kyle\nAge: 2\nOccupation: pet\nRelation to victim: pet\n\nThis pet
+    was seen at a pet fair. Kyle used to be too scared to get in the pool even in
+    his own home. However, towards the end of Mr. Finance's swim lessons, Kyle started
+    to jump in with him. \nHe loved to try fetching Mrs. Finance's ruby necklate
+    in the water, and a video by Mrs. Finance shows her husband swimming while Kyle
+    is trying to fetch the floating ruby. \nKyle was a rescue dog. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
   m_sharedMaterial: {fileID: 5416806443266638455, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
@@ -3114,7 +3455,7 @@ GameObject:
   - component: {fileID: 1645372438}
   - component: {fileID: 1645372437}
   m_Layer: 5
-  m_Name: Stats
+  m_Name: Infos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3138,8 +3479,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 688, y: 200}
-  m_SizeDelta: {x: 600, y: 400}
+  m_AnchoredPosition: {x: 688, y: 225}
+  m_SizeDelta: {x: 600, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1645372437
 MonoBehaviour:
@@ -3397,13 +3738,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1060613918}
     m_Modifications:
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: ProfileSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 03d60d02db2f54c029a14fa2d2ce097b, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: profileSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 03d60d02db2f54c029a14fa2d2ce097b, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: InformationString
+      value: "Name: Kyle\nAge: 2\nOccupation: pet\nRelation to victim: pet\n\nThis
+        pet was seen at a pet fair. Kyle used to be too scared to get in the pool
+        even in his own home. However, towards the end of Mr. Finance's swim lessons,
+        Kyle started to jump in with him. \nHe loved to play fetch with Mrs. Finance's
+        ruby necklate in the water, and a video by Mrs. Finance shows her husband
+        swimming while Kyle is trying to fetch the floating ruby. \nKyle was a rescue
+        dog. "
+      objectReference: {fileID: 0}
     - target: {fileID: 4872027149905586507, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 03d60d02db2f54c029a14fa2d2ce097b, type: 3}
     - target: {fileID: 7400840336766489238, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Name
-      value: Profile (2)
+      value: Kyle
       objectReference: {fileID: 0}
     - target: {fileID: 8862955690504552892, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Pivot.x
@@ -3495,6 +3854,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8862955690504552892, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
   m_PrefabInstance: {fileID: 1897803726}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1897803730 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+  m_PrefabInstance: {fileID: 1897803726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda2e9feb45857543b26677127d5d3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2088040779
 GameObject:
   m_ObjectHideFlags: 0
@@ -3531,7 +3901,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -306}
+  m_AnchoredPosition: {x: 0, y: -293}
   m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2088040781
