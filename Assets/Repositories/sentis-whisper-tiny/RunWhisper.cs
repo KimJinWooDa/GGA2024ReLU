@@ -50,6 +50,7 @@ public class RunWhisper : MonoBehaviour
     private Action<string> transcriptionCompleteCallback;
     
     private Dictionary<int, string> vocab;
+    private List<byte> byteBuffer = new List<byte>();
 
     // ?? ???? Start?? ??
     void Start()
@@ -254,7 +255,6 @@ public class RunWhisper : MonoBehaviour
     private string DecodeID(int id)
     {
         byte[] decodedBytes = new byte[] { };
-        int[] values = { 13499, 5500, 255, 19556, 9040, 14886, 14886, 2429, 30616, 1235 }; // == ID 
         if (vocab.ContainsKey(id))
         {
             string base64String = vocab[id];
@@ -273,18 +273,73 @@ public class RunWhisper : MonoBehaviour
         }
 
         Debug.Log("Byte Array: " + BitConverter.ToString(decodedBytes));
-        string decodedString = string.Empty;
-        try
-        {
-            decodedString = System.Text.Encoding.UTF8.GetString(decodedBytes);
-            Debug.Log("Decoded String: " + decodedString);
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError("Error decoding bytes to UTF-8: " + ex.Message);
-        }
+        // string decodedString = string.Empty;
+        // try
+        // {
+        //     decodedString = System.Text.Encoding.UTF8.GetString(decodedBytes);
+        //     Debug.Log("Decoded String: " + decodedString);
+        // }
+        // catch (Exception ex)
+        // {
+        //     Debug.LogError("Error decoding bytes to UTF-8: " + ex.Message);
+        // }
+        string decodedString = ProcessDecodedBytes(decodedBytes);
 
         return decodedString;
+    }
+
+    private string ProcessDecodedBytes(byte[] decodedBytes)
+    {
+        string result = string.Empty;
+
+        foreach (byte b in decodedBytes)
+        {
+            byteBuffer.Add(b);
+            if (IsCompleteUTF8Sequence(byteBuffer))
+            {
+                try
+                {
+                    result += Encoding.UTF8.GetString(byteBuffer.ToArray());
+                    byteBuffer.Clear();
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError("Error decoding bytes to UTF-8: " + ex.Message);
+                    byteBuffer.Clear();
+                }
+            }
+        }
+
+        return result;
+    }
+    
+    private bool IsCompleteUTF8Sequence(List<byte> byteList)
+    {
+        byte firstByte = byteList[0];
+
+        // Single byte (ASCII)
+        if (firstByte <= 0x7F) return true;
+
+        // Two-byte sequence (110xxxxx 10xxxxxx)
+        if (firstByte >= 0xC2 && firstByte <= 0xDF && byteList.Count >= 2)
+        {
+            return (byteList[1] & 0xC0) == 0x80; // Check if the second byte starts with 10xxxxxx
+        }
+
+        // Three-byte sequence (1110xxxx 10xxxxxx 10xxxxxx)
+        if (firstByte >= 0xE0 && firstByte <= 0xEF && byteList.Count >= 3)
+        {
+            return (byteList[1] & 0xC0) == 0x80 && (byteList[2] & 0xC0) == 0x80;
+        }
+
+        // Four-byte sequence (11110xxx 10xxxxxx 10xxxxxx 10xxxxxx)
+        if (firstByte >= 0xF0 && firstByte <= 0xF7 && byteList.Count >= 4)
+        {
+            return (byteList[1] & 0xC0) == 0x80 && (byteList[2] & 0xC0) == 0x80 && (byteList[3] & 0xC0) == 0x80;
+        }
+
+        // If not yet complete, return false
+        return false;
     }
 
     // ?? ??? ????? ??
