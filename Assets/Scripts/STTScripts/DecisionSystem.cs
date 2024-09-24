@@ -110,14 +110,17 @@ public class DecisionSystem : MonoBehaviour
         if (whisperModel == WhisperModel.Tiny)
         {
             tinyModel.isOn = true;
+            runWhisper.ReloadModel(WhisperModel.Tiny);
         }
         else if (whisperModel == WhisperModel.Medium)
         {
             mediumModel.isOn = true;
+            runWhisper.ReloadModel(WhisperModel.Medium);
         }
         else if (whisperModel == WhisperModel.Base)
         {
             baseModel.isOn = true;
+            runWhisper.ReloadModel(WhisperModel.Base);
         }
     }
 
@@ -282,6 +285,7 @@ public class DecisionSystem : MonoBehaviour
 
     private string DecomposeKoreanToPhonemes(string input)
     {
+        Debug.Log("Decomposing Korean to phonemes " + input);
         string result = string.Empty;
 
         foreach (char c in input)
@@ -310,6 +314,7 @@ public class DecisionSystem : MonoBehaviour
             }
         }
 
+        Debug.Log("Decomposed Korean to phonemes " + result);
         return result;
     }
 
