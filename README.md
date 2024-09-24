@@ -14,10 +14,10 @@
 
 ### TODO
 
-- [ ] Local STT / Azure 선택 기능 적용
-- [ ] 자모 분리 기능 적용
-- [ ] 자모 분리 선택 기능 적용
-- [ ] Levenshtein 점수 측정 기능
+- [x] Local STT / Azure 선택 기능 적용
+- [x] 자모 분리 기능 적용
+- [x] 자모 분리 선택 기능 적용
+- [x] Levenshtein 점수 측정 기능
 - [ ] Levenshtein Distance / strcmp 선택 기능 추가
 - [ ] Whisper 모델 업그레이드
 - [ ] Phi 모델 업그레이드
