@@ -42,7 +42,7 @@ MonoBehaviour:
       and posture reflecting your inner struggle. \" +\r\n                \"You express
       the heaviness of existence in every situation, emphasizing the inevitable sadness
       and emotional weight of life.\";"
-    isConfession: 0
+    isConfession: 1
   - characterName: Henry
     prompt: 'you are aggressive. be negative to everything you are asked, such as
       "why are you asking me this" or "why are you so dumb". talk like a dwarf in

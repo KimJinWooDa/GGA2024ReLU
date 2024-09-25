@@ -41,6 +41,7 @@ public class ChatHandler : MonoBehaviour
         displayClaudeText.gameObject.SetActive(false);
         displayUserText.gameObject.SetActive(false);
         informationPanel.OnSelectedProfile += OnProfileSelected;
+        informationPanel.OnConfessionStatus += OnConfessionStatus;
         
         for(int i = 0; i < characterPrompts.characterPrompts.Count; i++)
         {
@@ -49,9 +50,23 @@ public class ChatHandler : MonoBehaviour
         }
     }
 
+    private void OnConfessionStatus(string name, bool isConfession)
+    {
+        if (characterPromptDict.ContainsKey(name))
+        {
+            characterPromptDict[name].isConfession = isConfession;
+        }
+    }
+
+
     private void OnProfileSelected(string selectedName)
     {
         selectedProfileName = selectedName;
+        if (characterPromptDict.ContainsKey(selectedName))
+        {
+            CharacterPrompt characterPrompt = characterPromptDict[selectedName];
+            informationPanel.SetToggle(characterPrompt.isConfession);
+        }
     }
 
     // 유저가 메시지를 입력했을 때 호출되는 함수

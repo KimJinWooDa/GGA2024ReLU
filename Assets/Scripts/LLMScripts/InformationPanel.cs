@@ -7,12 +7,14 @@ using UnityEngine;
 public class InformationPanel : MonoBehaviour
 {
     public Action<string> OnSelectedProfile;
+    public Action<string, bool> OnConfessionStatus;
     
     [SerializeField] private List<Profile> profiles;
+    [SerializeField] private TextMeshProUGUI informationText;
     [SerializeField] private UnityEngine.UI.Image ratingBar;
     [SerializeField] private UnityEngine.UI.Image profileImage;
     [SerializeField] private TextMeshProUGUI emotionText;
-    [SerializeField] private TextMeshProUGUI informationText;
+    [SerializeField] private UnityEngine.UI.Toggle confessionToggle;
 
     private Profile selectedProfile;
 
@@ -61,6 +63,8 @@ public class InformationPanel : MonoBehaviour
             profile.SetSelected(false);
         }
         profiles[0].ProfileButton.onClick.Invoke();
+        
+        confessionToggle.onValueChanged.AddListener(OnConfessionToggle);
     }
 
     private void OnProfileSelected(Profile inProfile)
@@ -78,5 +82,15 @@ public class InformationPanel : MonoBehaviour
         informationText.text = selectedProfile.InformationString;
         
         OnSelectedProfile?.Invoke(selectedProfile.ProfileName);
+    }
+
+    private void OnConfessionToggle(bool isConfession)
+    {
+        OnConfessionStatus?.Invoke(selectedProfile.ProfileName, isConfession);
+    }
+
+    public void SetToggle(bool isOn)
+    {
+        confessionToggle.isOn = isOn;
     }
 }
