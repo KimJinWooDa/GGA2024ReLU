@@ -7,6 +7,7 @@ public class Profile : MonoBehaviour
     public Action<Profile> OnSelected;
     public bool IsSelected = false;
     
+    public string ProfileName;
     [TextArea]
     public string InformationString;
     public Sprite ProfileSprite;

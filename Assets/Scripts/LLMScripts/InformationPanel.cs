@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,6 +6,8 @@ using UnityEngine;
 
 public class InformationPanel : MonoBehaviour
 {
+    public Action<string> OnSelectedProfile;
+    
     [SerializeField] private List<Profile> profiles;
     [SerializeField] private UnityEngine.UI.Image profileImage;
     [SerializeField] private TextMeshProUGUI informationText;
@@ -32,5 +35,7 @@ public class InformationPanel : MonoBehaviour
         inProfile.SetSelected(true);
         profileImage.sprite = selectedProfile.ProfileSprite;
         informationText.text = selectedProfile.InformationString;
+        
+        OnSelectedProfile?.Invoke(selectedProfile.ProfileName);
     }
 }

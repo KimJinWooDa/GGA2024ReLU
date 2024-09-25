@@ -416,6 +416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingIndicator: {fileID: 722089366}
+  informationPanel: {fileID: 1184748593}
   userInputField: {fileID: 2088040781}
   displayUserText: {fileID: 662403815}
   displayClaudeText: {fileID: 1243200848}
@@ -798,6 +799,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1060613918}
     m_Modifications:
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: ProfileName
+      value: Henry
+      objectReference: {fileID: 0}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileSprite
       value: 
@@ -1558,6 +1563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f5ee68bc44844a69f4643e6a0b6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterPrompts: {fileID: 11400000, guid: d374ef1759b019f4698ce22727f663fa, type: 2}
 --- !u!4 &680664696
 Transform:
   m_ObjectHideFlags: 0
@@ -2250,6 +2256,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1060613918}
     m_Modifications:
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: ProfileName
+      value: Wife
+      objectReference: {fileID: 0}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileSprite
       value: 
       objectReference: {fileID: 21300000, guid: ee6c8f37bd0f143a89513cadc662c0b0, type: 3}
@@ -2275,7 +2285,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: ee6c8f37bd0f143a89513cadc662c0b0, type: 3}
     - target: {fileID: 7400840336766489238, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Name
-      value: Profile
+      value: Wife
       objectReference: {fileID: 0}
     - target: {fileID: 8862955690504552892, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Pivot.x
@@ -3746,6 +3756,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1060613918}
     m_Modifications:
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: ProfileName
+      value: Kyle
+      objectReference: {fileID: 0}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileSprite
       value: 

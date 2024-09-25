@@ -7,17 +7,25 @@ using UnityEngine.Serialization;
 public class ChatHandler : MonoBehaviour
 {
     [SerializeField] private GameObject loadingIndicator;  // API 호출 중에 표시할 로딩 인디케이터
+    [SerializeField] private InformationPanel informationPanel;
     
     public TMP_InputField userInputField;  // 유저의 입력을 받을 InputField
     [FormerlySerializedAs("displayText")] public TextMeshProUGUI displayUserText;    // 입력된 문자열을 표시할 Text
     public TextMeshProUGUI displayClaudeText;
     public ClaudeClient claudeClient;      // Claude API를 호출할 클라이언트 (다른 MonoBehaviour)
 
+    private string selectedProfileName = string.Empty;
     private void Start()
     {
         loadingIndicator.SetActive(false);
         displayClaudeText.gameObject.SetActive(false);
         displayUserText.gameObject.SetActive(false);
+        informationPanel.OnSelectedProfile += OnProfileSelected;
+    }
+
+    private void OnProfileSelected(string selectedName)
+    {
+        selectedProfileName = selectedName;
     }
 
     // 유저가 메시지를 입력했을 때 호출되는 함수
@@ -44,7 +52,7 @@ public class ChatHandler : MonoBehaviour
     {
         loadingIndicator.SetActive(true);
         
-        yield return claudeClient.GetResponseCoroutine(userMessage, (response) =>
+        yield return claudeClient.GetResponseCoroutine(selectedProfileName, userMessage, (response) =>
         {
             displayClaudeText.text = "\nClaude: " + response;  // Claude의 응답을 텍스트에 추가로 표시
             displayClaudeText.gameObject.SetActive(true);
