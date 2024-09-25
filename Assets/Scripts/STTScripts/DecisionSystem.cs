@@ -253,6 +253,8 @@ public class DecisionSystem : MonoBehaviour
             SetRecordingState(false);
         }
 
+        inTranscribedString = inTranscribedString.Trim();
+        
         if (stringCompareType == StringCompareType.Phoneme)
         {
             inTranscribedString = DecomposeKoreanToPhonemes(inTranscribedString);
