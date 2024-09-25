@@ -821,6 +821,10 @@ PrefabInstance:
         was eager to relax a little bit. \nWith a glass of cocktail in his hand,
         he put his headphones on, missing the cry for help from Mr. Finance. "
       objectReference: {fileID: 0}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: DefaultProfileSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f423f18bae754a7dbae893a08d00eef, type: 3}
     - target: {fileID: 4806784428629027866, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2256,17 +2260,41 @@ PrefabInstance:
     m_TransformParent: {fileID: 1060613918}
     m_Modifications:
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: JoySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f423f18bae754a7dbae893a08d00eef, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: FearSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 19ede287137504ab8ab51ea773c382b2, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: AngerSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f802ceda35f5c4662a240c6ceef56a64, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileName
       value: Wife
       objectReference: {fileID: 0}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: NeutralSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 695bf1a0f9b004b57b57a6b3f78e4322, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileSprite
       value: 
       objectReference: {fileID: 21300000, guid: ee6c8f37bd0f143a89513cadc662c0b0, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: SadnessSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3e4bce5241c7642d392b39886c15f562, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: profileSprite
       value: 
       objectReference: {fileID: 21300000, guid: ee6c8f37bd0f143a89513cadc662c0b0, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: ExcitementSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 61d43c9213e96492da5161e16d57dfc9, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: InformationString
       value: "Name: Mrs. Finance\nAge: 40\nOccupation: Surgeon\nRelation to victim:
@@ -2275,6 +2303,10 @@ PrefabInstance:
         to swim, jumped in to save him. \nShe was wearing a ruby necklace she got
         as her anniversary gift and were planning on spending 2 more weeks in Cabo. "
       objectReference: {fileID: 0}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: DefaultProfileSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ee6c8f37bd0f143a89513cadc662c0b0, type: 3}
     - target: {fileID: 4806784428629027866, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3778,6 +3810,10 @@ PrefabInstance:
         swimming while Kyle is trying to fetch the floating ruby. \nKyle was a rescue
         dog. "
       objectReference: {fileID: 0}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: DefaultProfileSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 03d60d02db2f54c029a14fa2d2ce097b, type: 3}
     - target: {fileID: 4806784428629027866, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_IsActive
       value: 0
