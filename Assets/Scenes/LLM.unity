@@ -3144,7 +3144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sttType: 0
   whisperModel: 0
-  transcriptionDisplay: {fileID: 662403815}
+  transcriptionDisplay: {fileID: 2088040781}
   recordingButton: {fileID: 1264144257}
   recordingImage: {fileID: 1264144258}
   recordingSprite: {fileID: 21300000, guid: 6c99278830c934623816e5cf4a4956d6, type: 3}

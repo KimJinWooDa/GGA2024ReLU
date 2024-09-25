@@ -7,7 +7,7 @@ public class STTSystem : MonoBehaviour
     public DecisionSystem.STTType sttType;
     public DecisionSystem.WhisperModel whisperModel;
     
-    [SerializeField] private TextMeshProUGUI transcriptionDisplay;
+    [SerializeField] private TMP_InputField transcriptionDisplay;
     [SerializeField] private UnityEngine.UI.Button recordingButton;
     [SerializeField] private UnityEngine.UI.Image recordingImage;
     [SerializeField] private Sprite recordingSprite;
