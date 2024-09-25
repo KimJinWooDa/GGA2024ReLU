@@ -2,8 +2,15 @@ using System;
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using Newtonsoft.Json;
 using UnityEngine.Serialization;
 
+public class ResponseData
+{
+    public int rating { get; set; }
+    public string text { get; set; }
+    public string emotion { get; set; }
+}
 public class ChatHandler : MonoBehaviour
 {
     [SerializeField] private GameObject loadingIndicator;  // API 호출 중에 표시할 로딩 인디케이터
@@ -54,7 +61,16 @@ public class ChatHandler : MonoBehaviour
         
         yield return claudeClient.GetResponseCoroutine(selectedProfileName, userMessage, (response) =>
         {
-            displayClaudeText.text = "\nClaude: " + response;  // Claude의 응답을 텍스트에 추가로 표시
+            try
+            {
+                ResponseData responseData = JsonConvert.DeserializeObject<ResponseData>(response);
+                displayClaudeText.text = responseData.text; // Claude의 응답을 텍스트에 표시
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"Failed to deserialize the response: {ex.Message}");
+                displayClaudeText.text = "\nClaude: " + response;  // Claude의 응답을 텍스트에 추가로 표시
+            }
             displayClaudeText.gameObject.SetActive(true);
         });
         
