@@ -415,6 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3a22b8997d44c3cad4069701a6ba67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterPrompts: {fileID: 11400000, guid: d374ef1759b019f4698ce22727f663fa, type: 2}
   loadingIndicator: {fileID: 722089366}
   informationPanel: {fileID: 1184748593}
   userInputField: {fileID: 2088040781}
@@ -1563,7 +1564,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f5ee68bc44844a69f4643e6a0b6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrompts: {fileID: 11400000, guid: d374ef1759b019f4698ce22727f663fa, type: 2}
 --- !u!4 &680664696
 Transform:
   m_ObjectHideFlags: 0

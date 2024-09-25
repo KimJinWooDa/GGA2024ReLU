@@ -54,6 +54,6 @@ MonoBehaviour:
       or "ruff" into your sentences. you talk very simple but is very enthusiastic
       to answer any questions. '
     confessionPrompt: 'You are a cat who can say few human words. add words such
-      as "meow" into your sentences. You don''t say much words but use difficult
-      and sophisticated vocabulary. You feel ennui in answering questions. '
+      as "meow" or "purr"  into your sentences. You don''t say much words but use
+      difficult and sophisticated vocabulary. You feel ennui in answering questions. '
     isConfession: 1

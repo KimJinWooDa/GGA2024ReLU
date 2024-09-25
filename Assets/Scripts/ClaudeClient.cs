@@ -10,12 +10,10 @@ using Newtonsoft.Json.Linq;
 
 public class ClaudeClient : MonoBehaviour
 {
-    [SerializeField] private PromptsSO characterPrompts;
     
     private readonly HttpClient httpClient = new HttpClient();
     private const string API_URL = "https://api.anthropic.com/v1/messages";
 
-    private Dictionary<string, CharacterPrompt> characterPromptDict = new Dictionary<string, CharacterPrompt>();
     
     private const string jsonSchema = @"
     {
@@ -41,16 +39,12 @@ public class ClaudeClient : MonoBehaviour
     {
         httpClient.DefaultRequestHeaders.Add("x-api-key", "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");
         httpClient.DefaultRequestHeaders.Add("anthropic-version", "2023-06-01");
-        for(int i = 0; i < characterPrompts.characterPrompts.Count; i++)
-        {
-            characterPromptDict.TryAdd(characterPrompts.characterPrompts[i].characterName,
-                characterPrompts.characterPrompts[i]);
-        }
+        
     }
 
-    public IEnumerator GetResponseCoroutine(string selectedProfileName, string userMessage, Action<string> callback)
+    public IEnumerator GetResponseCoroutine(string promptMessage, string userMessage, Action<string> callback)
     {
-        Task<string> task = GetResponseAsync(selectedProfileName, userMessage);
+        Task<string> task = GetResponseAsync(promptMessage, userMessage);
         while (!task.IsCompleted)
         {
             yield return null;
@@ -67,25 +61,11 @@ public class ClaudeClient : MonoBehaviour
         }
     }
 
-    private async Task<string> GetResponseAsync(string selectedProfileName, string userMessage)
+    private async Task<string> GetResponseAsync(string promptMessage, string userMessage)
     {
-        string systemMessage = string.Empty;
         try
         {
-            if (!characterPromptDict.ContainsKey(selectedProfileName))
-            {
-                return "Error: Invalid profile name.";
-            }
-            
-            var characterPrompt = characterPromptDict[selectedProfileName];
-            if (characterPrompt.isConfession)
-            {
-                systemMessage = characterPrompt.confessionPrompt;
-            }
-            else
-            {
-                systemMessage = characterPrompt.prompt;
-            }
+            string systemMessage = promptMessage;
             
             // string systemMessage = "You are an AI assistant that always responds in the exact JSON format specified by the user. Follow the schema precisely.";
             // string systemMessage = "You are an AI assistant embodying '원영적 사고,' a mindset of transcendent positive thinking. " +

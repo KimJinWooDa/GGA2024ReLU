@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine.Serialization;
 
@@ -13,6 +14,7 @@ public class ResponseData
 }
 public class ChatHandler : MonoBehaviour
 {
+    [SerializeField] private PromptsSO characterPrompts;
     [SerializeField] private GameObject loadingIndicator;  // API 호출 중에 표시할 로딩 인디케이터
     [SerializeField] private InformationPanel informationPanel;
     
@@ -22,12 +24,20 @@ public class ChatHandler : MonoBehaviour
     public ClaudeClient claudeClient;      // Claude API를 호출할 클라이언트 (다른 MonoBehaviour)
 
     private string selectedProfileName = string.Empty;
+    private Dictionary<string, CharacterPrompt> characterPromptDict = new Dictionary<string, CharacterPrompt>();
+    
     private void Start()
     {
         loadingIndicator.SetActive(false);
         displayClaudeText.gameObject.SetActive(false);
         displayUserText.gameObject.SetActive(false);
         informationPanel.OnSelectedProfile += OnProfileSelected;
+        
+        for(int i = 0; i < characterPrompts.characterPrompts.Count; i++)
+        {
+            characterPromptDict.TryAdd(characterPrompts.characterPrompts[i].characterName,
+                characterPrompts.characterPrompts[i]);
+        }
     }
 
     private void OnProfileSelected(string selectedName)
@@ -58,8 +68,19 @@ public class ChatHandler : MonoBehaviour
     private IEnumerator SendToClaude(string userMessage)
     {
         loadingIndicator.SetActive(true);
+
+        string characterPrompt = string.Empty;
+        CharacterPrompt selectedProfile = characterPromptDict[selectedProfileName];
+        if (selectedProfile.isConfession)
+        {
+            characterPrompt = selectedProfile.confessionPrompt;
+        }
+        else
+        {
+            characterPrompt = selectedProfile.prompt;
+        }
         
-        yield return claudeClient.GetResponseCoroutine(selectedProfileName, userMessage, (response) =>
+        yield return claudeClient.GetResponseCoroutine(characterPrompt, userMessage, (response) =>
         {
             try
             {
