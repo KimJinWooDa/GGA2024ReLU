@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -45,6 +46,7 @@ public class DecisionSystem : MonoBehaviour
     [SerializeField] private Toggle azureToggle;
     [SerializeField] private Toggle levenshteinToggle;
     [SerializeField] private Toggle simpleCharacterDifferenceToggle;
+    [SerializeField] private Toggle simpleCharacterMatchToggle;
     [SerializeField] private Toggle phonemeToggle;
     [SerializeField] private Toggle syllableToggle;
     //Whister관련 추가 toggle
@@ -55,7 +57,7 @@ public class DecisionSystem : MonoBehaviour
     
     // Enum definitions for STT, comparison, and string comparison types
     private enum STTType { Whisper, Azure }
-    private enum CalculationType { Levenshtein, SimpleCharacterDifference }
+    private enum CalculationType { Levenshtein, SimpleCharacterDifference, SimpleCharacterMatch }
     private enum StringCompareType { Phoneme, Syllable }
     public enum WhisperModel { Tiny, Medium, Base }
     
@@ -96,6 +98,10 @@ public class DecisionSystem : MonoBehaviour
         else if (calculationType == CalculationType.SimpleCharacterDifference)
         {
             simpleCharacterDifferenceToggle.isOn = true;
+        }
+        else if (calculationType == CalculationType.SimpleCharacterMatch)
+        {
+            simpleCharacterMatchToggle.isOn = true;
         }
         stringCompareType = StringCompareTypeSetting; 
         if (stringCompareType == StringCompareType.Phoneme)
@@ -192,9 +198,11 @@ public class DecisionSystem : MonoBehaviour
             
         }
 
-        if (levenshteinToggle != null && simpleCharacterDifferenceToggle != null)
+        if (levenshteinToggle != null && simpleCharacterDifferenceToggle != null && simpleCharacterMatchToggle != null)
         {
-            calculationType = levenshteinToggle.isOn ? CalculationType.Levenshtein : CalculationType.SimpleCharacterDifference;
+            calculationType = levenshteinToggle.isOn ? CalculationType.Levenshtein :
+                simpleCharacterDifferenceToggle.isOn ? CalculationType.SimpleCharacterDifference :
+                CalculationType.SimpleCharacterMatch;
         }
         
         if (phonemeToggle != null && syllableToggle != null)
@@ -206,6 +214,7 @@ public class DecisionSystem : MonoBehaviour
     {
         answerString = answerBook[UnityEngine.Random.Range(0, answerBook.Count)];
         questionText.text = answerString;
+        answerString = CleanString(answerString);
     }
 
     //API related functions ==================================================================================
@@ -245,6 +254,14 @@ public class DecisionSystem : MonoBehaviour
         recordImage.sprite = isRecording ? recordingSprite : notRecordingSprite;
     }
 
+    private string CleanString(string input)
+    {
+        char[] arr = input
+            .Where(c => !char.IsPunctuation(c) && !char.IsWhiteSpace(c))
+            .Select(c => char.IsLetter(c) && c <= 'Z' ? char.ToLower(c) : c) // Convert only English letters to lowercase
+            .ToArray();
+        return new string(arr);
+    }
     private void OnTranscriptionComplete(string inTranscribedString)
     {
         //@note: Azure는 자동 녹음 일시 중지 되지만 이미지 및 상태만 변경 필요. 
@@ -253,7 +270,9 @@ public class DecisionSystem : MonoBehaviour
             SetRecordingState(false);
         }
 
-        inTranscribedString = inTranscribedString.Trim();
+        inTranscribedString = CleanString(inTranscribedString);
+        Debug.Log("Transcribed string: " + inTranscribedString);
+        Debug.Log("Answer string: " + answerString);
         
         if (stringCompareType == StringCompareType.Phoneme)
         {
@@ -262,16 +281,34 @@ public class DecisionSystem : MonoBehaviour
         }
         
         // Perform selected comparison
-        int distance = calculationType == CalculationType.Levenshtein ?
-            LevenshteinDistance(inTranscribedString, answerString) :
-            SimpleCharacterDifference(inTranscribedString, answerString);
+        int distance = 0;
+        if (calculationType == CalculationType.Levenshtein)
+        {
+            distance = LevenshteinDistance(inTranscribedString, answerString);
+        }
+        else if (calculationType == CalculationType.SimpleCharacterDifference)
+        {
+            distance = SimpleCharacterDifference(inTranscribedString, answerString);
+        }
+        else if (calculationType == CalculationType.SimpleCharacterMatch)
+        {
+            distance = SimpleCharacterMatch(inTranscribedString, answerString); 
+        }
 
         UpdateScore(distance, answerString.Length);
     }
 
     private void UpdateScore(int distance, int totalCharacters)
     {
-        int score = Mathf.Max(0, (int)(((float)(totalCharacters - distance) / totalCharacters) * 100));
+        int score = 0;
+        if (calculationType == CalculationType.SimpleCharacterMatch)
+        {
+            score = (int)(((float)distance / totalCharacters) * 100);
+        }
+        else
+        {
+            score = Mathf.Max(0, (int)(((float)(totalCharacters - distance) / totalCharacters) * 100));
+        }
         scoreText.text = score.ToString();
         float newTotalScore = totalScore + score;
 
@@ -337,6 +374,24 @@ public class DecisionSystem : MonoBehaviour
         scoreSlider.value = endValue / finalScore;
         catAnimator.SetBool(isMove, false);
     }
+    
+    private int SimpleCharacterMatch(string a, string b)
+    {
+        int length = Mathf.Min(a.Length, b.Length);
+        int matchCount = 0;
+
+        for (int i = 0; i < length; i++)
+        {
+            if (a[i] == b[i])
+            {
+                matchCount++;
+            }
+        }
+
+        return matchCount;
+    }
+    
+    
 
     private int SimpleCharacterDifference(string a, string b)
     {
