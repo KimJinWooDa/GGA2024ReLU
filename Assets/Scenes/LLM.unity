@@ -853,7 +853,7 @@ MonoBehaviour:
   startRecordingButton: {fileID: 0}
   stopRecordingButton: {fileID: 0}
   whisperEngine: {fileID: 449187150}
-  transcriptionDisplay: {fileID: 662403815}
+  transcriptionDisplay: {fileID: 0}
   resultDisplay: {fileID: 0}
 --- !u!1001 &455096528
 PrefabInstance:
@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsEnabled: 0
-  attemptText: {fileID: 662403815}
+  attemptText: {fileID: 0}
 --- !u!4 &559051808
 Transform:
   m_ObjectHideFlags: 0
@@ -3142,7 +3142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376365211a4a3e443be63c60c1fb8adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sttType: 0
+  sttType: 1
   whisperModel: 0
   transcriptionDisplay: {fileID: 2088040781}
   recordingButton: {fileID: 1264144257}

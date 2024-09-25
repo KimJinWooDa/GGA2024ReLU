@@ -103,7 +103,7 @@ public class AzureSTT : MonoBehaviour
     {
         if (attemptText == null)
         {
-            UnityEngine.Debug.LogError("outputText property is null! Assign a UI Text element to it.");
+            UnityEngine.Debug.LogWarning("outputText property is null! Assign a UI Text element to it.");
         }
         else
         {
