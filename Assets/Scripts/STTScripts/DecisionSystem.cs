@@ -56,7 +56,7 @@ public class DecisionSystem : MonoBehaviour
     [FormerlySerializedAs("_base")] [SerializeField] private Toggle baseModel;
     
     // Enum definitions for STT, comparison, and string comparison types
-    private enum STTType { Whisper, Azure }
+    public enum STTType { Whisper, Azure }
     private enum CalculationType { Levenshtein, SimpleCharacterDifference, SimpleCharacterMatch }
     private enum StringCompareType { Phoneme, Syllable }
     public enum WhisperModel { Tiny, Medium, Base }
