@@ -45,6 +45,17 @@ public class TooltipDisplayManager : MonoBehaviour
             tooltipDisplay.TooltipImage.gameObject.SetActive(false);
         }
         
+        RectTransform rectTransform = tooltipDisplay.TooltipRect;
+        Vector2 tooltipSize = rectTransform.sizeDelta;
+
+        Vector3 adjustedPosition = new Vector3(
+            inPointerEventData.position.x + tooltipSize.x * rectTransform.pivot.x,
+            inPointerEventData.position.y - tooltipSize.y * (1 - rectTransform.pivot.y), 
+            0
+        );
+
+        rectTransform.position = adjustedPosition;
+        
         tooltipDisplay.gameObject.SetActive(true);
     }
     private void HideTooltip()
