@@ -1335,7 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6784314, g: 0.53333336, b: 0.28627452, a: 1}
+  m_Color: {r: 0.6543649, g: 0.75820637, b: 0.8930817, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2374,10 +2374,10 @@ RectTransform:
   - {fileID: 1700381138}
   - {fileID: 1394220483}
   - {fileID: 1049036021}
-  - {fileID: 1420077411}
-  - {fileID: 152782202}
   - {fileID: 1892117908}
   - {fileID: 277521833}
+  - {fileID: 1420077411}
+  - {fileID: 152782202}
   - {fileID: 457726721}
   - {fileID: 1511733738}
   - {fileID: 1218098691}
@@ -2874,7 +2874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6784314, g: 0.53333336, b: 0.28627452, a: 1}
+  m_Color: {r: 0.6543649, g: 0.75820637, b: 0.8930817, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5090,15 +5090,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Next Question
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3bd05703497724fbb97f6ac673ffb0a2, type: 2}
-  m_sharedMaterial: {fileID: -8798477726594418421, guid: 3bd05703497724fbb97f6ac673ffb0a2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 23616b1d3aa4e449dae482e465a926a6, type: 2}
+  m_sharedMaterial: {fileID: -4171563015097924827, guid: 23616b1d3aa4e449dae482e465a926a6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6222,8 +6222,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1485901956}
-  - {fileID: 100527647}
   - {fileID: 1162100876}
+  - {fileID: 100527647}
   m_Father: {fileID: 782945056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
@@ -6336,7 +6336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.33333334, g: 0.2509804, b: 0.14901961, a: 1}
+  m_Color: {r: 0.22352943, g: 0.32941177, b: 0.43921572, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6719,7 +6719,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5934459995686099604, guid: 9b5e4863a0168724a9e303e42b48f50c, type: 3}
       propertyPath: tooltipText
-      value: 'Microsoft''s Azure STT is very accurate but is not free. '
+      value: 'AUTOMATICALLY STOPS RECORDING THROUGH DETECTION. Microsoft''s Azure
+        STT is very accurate but is not free. '
       objectReference: {fileID: 0}
     - target: {fileID: 6085840626626279176, guid: 9b5e4863a0168724a9e303e42b48f50c, type: 3}
       propertyPath: m_Name
@@ -6879,7 +6880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6784314, g: 0.53333336, b: 0.2901961, a: 1}
+  m_Color: {r: 0.6543649, g: 0.75820637, b: 0.8930817, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8973,7 +8974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.33333334, g: 0.2509804, b: 0.14901961, a: 1}
+  m_Color: {r: 0.22352943, g: 0.32941177, b: 0.43921572, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9064,7 +9065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3333333, g: 0.24580711, b: 0.15828088, a: 1}
+  m_Color: {r: 0.22352943, g: 0.32941177, b: 0.43921572, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
