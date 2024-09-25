@@ -6,11 +6,20 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine.Serialization;
 
+public enum Emotion
+{
+    Anger,
+    Sadness,
+    Joy,
+    Neutral,
+    Excitement,
+    Fear
+}
 public class ResponseData
 {
     public int rating { get; set; }
     public string text { get; set; }
-    public string emotion { get; set; }
+    public Emotion emotion { get; set; }
 }
 public class ChatHandler : MonoBehaviour
 {
@@ -86,6 +95,7 @@ public class ChatHandler : MonoBehaviour
             {
                 ResponseData responseData = JsonConvert.DeserializeObject<ResponseData>(response);
                 displayClaudeText.text = responseData.text; // Claude의 응답을 텍스트에 표시
+                informationPanel.OnResponseReceived(responseData.rating, responseData.text, responseData.emotion);
             }
             catch (Exception ex)
             {

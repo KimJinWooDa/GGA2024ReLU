@@ -13,6 +13,41 @@ public class InformationPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI informationText;
 
     private Profile selectedProfile;
+
+    public void OnResponseReceived(int rating, string text, Emotion emotion)
+    {
+        switch (emotion)
+        {
+            case Emotion.Anger:
+                if (!selectedProfile.AngerSprite) return;
+                profileImage.sprite = selectedProfile.AngerSprite;
+                break;
+            case Emotion.Sadness:
+                if (!selectedProfile.SadnessSprite) return;
+                profileImage.sprite = selectedProfile.SadnessSprite;
+                break;
+            case Emotion.Joy:
+                if (!selectedProfile.JoySprite) return;
+                profileImage.sprite = selectedProfile.JoySprite;
+                break;
+            case Emotion.Neutral:
+                if (!selectedProfile.NeutralSprite) return;
+                profileImage.sprite = selectedProfile.NeutralSprite;
+                break;
+            case Emotion.Excitement:
+                if (!selectedProfile.ExcitementSprite) return;
+                profileImage.sprite = selectedProfile.ExcitementSprite;
+                break;
+            case Emotion.Fear:
+                if (!selectedProfile.FearSprite) return;
+                profileImage.sprite = selectedProfile.FearSprite;
+                break;
+            default:
+                if (!selectedProfile.DefaultProfileSprite) return;
+                profileImage.sprite = selectedProfile.DefaultProfileSprite;
+                break;
+        }
+    }
     private void Start()
     {
         foreach (var profile in profiles)
@@ -33,7 +68,7 @@ public class InformationPanel : MonoBehaviour
         }
         
         inProfile.SetSelected(true);
-        profileImage.sprite = selectedProfile.ProfileSprite;
+        profileImage.sprite = selectedProfile.DefaultProfileSprite;
         informationText.text = selectedProfile.InformationString;
         
         OnSelectedProfile?.Invoke(selectedProfile.ProfileName);
