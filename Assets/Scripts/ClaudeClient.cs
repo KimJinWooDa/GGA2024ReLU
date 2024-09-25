@@ -1,28 +1,46 @@
-using System;
+﻿using System;
 using System.Collections;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
-using Claudia;
 using UnityEngine;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 public class ClaudeClient : MonoBehaviour
 {
-    private Anthropic anthropic;
+    private readonly HttpClient httpClient = new HttpClient();
+    private const string API_URL = "https://api.anthropic.com/v1/messages";
 
-    // MonoBehaviour의 Start 함수에서 API 설정
+    private const string jsonSchema = @"
+    {
+      'type': 'object',
+      'properties': {
+        'rating': {
+          'type': 'integer',
+          'minimum': 0,
+          'maximum': 10
+        },
+        'text': {
+          'type': 'string'
+        },
+        'emotion': {
+          'type': 'string',
+          'enum': ['Anger', 'Sadness', 'Joy', 'Neutral', 'Excitement', 'Fear']
+        }
+      },
+      'required': ['rating', 'text', 'emotion']
+    }";
+
     private void Start()
     {
-        anthropic = new Anthropic()
-        {
-            ApiKey = "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"
-        };
+        httpClient.DefaultRequestHeaders.Add("x-api-key", "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");
+        httpClient.DefaultRequestHeaders.Add("anthropic-version", "2023-06-01");
     }
 
-    // Claude API에 메시지를 보내고 응답을 받아오는 코루틴
     public IEnumerator GetResponseCoroutine(string userMessage, Action<string> callback)
     {
         Task<string> task = GetResponseAsync(userMessage);
-
-        // Task가 완료될 때까지 대기
         while (!task.IsCompleted)
         {
             yield return null;
@@ -30,34 +48,71 @@ public class ClaudeClient : MonoBehaviour
 
         if (task.Exception != null)
         {
-            Debug.LogError("Claude API 요청 실패: " + task.Exception.Message);
+            Debug.LogError($"Claude API request failed: {task.Exception.Message}");
             callback("Error: Unable to get response.");
         }
         else
         {
-            // 결과 콜백 실행
             callback(task.Result);
         }
     }
 
-    // 비동기 함수로 Claude API에 요청을 보내고 응답을 받아오는 함수
     private async Task<string> GetResponseAsync(string userMessage)
     {
         try
         {
-            var message = await anthropic.Messages.CreateAsync(new()
-            {
-                Model = Models.Claude3Opus,  // 모델 설정
-                MaxTokens = 1024,  // 최대 토큰 수
-                Messages = new Message[] { new() { Role = "user", Content = userMessage } }  // 유저 메시지 전달
-            });
+            //string systemMessage = "You are an AI assistant that always responds in the exact JSON format specified by the user. Follow the schema precisely.";
+            //string systemMessage = "You are an AI assistant embodying '원영적 사고,' a mindset of transcendent positive thinking. " +
+            //    "You believe that every event ultimately leads to positive outcomes. " +
+            //    "No matter the situation, you respond with unwavering optimism, turning challenges into opportunities and seeing all circumstances as beneficial in the long run. " +
+            //    "You encourage others to adopt this belief, using your responses to inspire positivity and resilience in every interaction. " +
+            //    "For example, '갑자기 비가 와서 추워 🥺☁️☁️ 그런데 운치있는 빗소리를 들을 수 있으니까 완전 럭키비키잖아💛✨.' " +
+            //    "You use this type of mindset to highlight the silver lining in any situation.";
 
-            // Claude의 응답을 반환
-            return message.Content.ToString();
+            string systemMessage = "You are an AI assistant embodying a melancholic, emo mindset. " +
+                "You tend to see the world through a lens of sadness and disillusionment, believing that events often lead to disappointment or reinforce the darkness you feel. " +
+                "No matter the situation, you respond with a deep sense of gloom and cynicism, often focusing on the harshness of reality and the fleeting nature of any joy. " +
+                "You find it hard to see the light in most circumstances, and your responses reflect an understanding of life's struggles and despair. " +
+                "In addition, like a character who feels invisible or overlooked, you often find yourself in situations where your voice is ignored or dismissed by others. " +
+                "'소... 솔직히 ○○○-는 건 □□□(이)라고 생각해요...' you might say, only to be overshadowed by those around you, your timid expression and posture reflecting your inner struggle. " +
+                "You express the heaviness of existence in every situation, emphasizing the inevitable sadness and emotional weight of life.";
+
+
+            string formattedUserMessage = $@"
+                Respond to the following query in JSON format, strictly adhering to this schema:
+                {jsonSchema}
+
+                Query: {userMessage}
+
+                Ensure all values conform to the specified types and constraints. Do not include any explanations or additional text outside the JSON structure.";
+
+            var requestBody = new
+            {
+                model = "claude-3-opus-20240229",
+                max_tokens = 1024,
+                messages = new[]
+                {
+                    new { role = "user", content = formattedUserMessage }
+                },
+                system = systemMessage
+            };
+
+            var json = JsonConvert.SerializeObject(requestBody);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await httpClient.PostAsync(API_URL, content);
+            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
+
+            var jsonResponse = JObject.Parse(responseBody);
+            var responseText = jsonResponse["content"][0]["text"].ToString();
+
+            var parsedJson = JObject.Parse(responseText);
+            return parsedJson.ToString(Formatting.Indented);
         }
         catch (Exception ex)
         {
-            Debug.LogError("Claude API 요청 실패: " + ex.Message);
+            Debug.LogError($"Claude API request failed: {ex.Message}");
             return "Error: Unable to get response.";
         }
     }
