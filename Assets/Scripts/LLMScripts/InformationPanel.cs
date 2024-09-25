@@ -9,7 +9,9 @@ public class InformationPanel : MonoBehaviour
     public Action<string> OnSelectedProfile;
     
     [SerializeField] private List<Profile> profiles;
+    [SerializeField] private UnityEngine.UI.Image ratingBar;
     [SerializeField] private UnityEngine.UI.Image profileImage;
+    [SerializeField] private TextMeshProUGUI emotionText;
     [SerializeField] private TextMeshProUGUI informationText;
 
     private Profile selectedProfile;
@@ -47,6 +49,8 @@ public class InformationPanel : MonoBehaviour
                 profileImage.sprite = selectedProfile.DefaultProfileSprite;
                 break;
         }
+        ratingBar.fillAmount = rating / 10f;
+        emotionText.text = emotion.ToString();
     }
     private void Start()
     {
@@ -68,7 +72,9 @@ public class InformationPanel : MonoBehaviour
         }
         
         inProfile.SetSelected(true);
+        ratingBar.fillAmount = 1;
         profileImage.sprite = selectedProfile.DefaultProfileSprite;
+        emotionText.text = string.Empty;
         informationText.text = selectedProfile.InformationString;
         
         OnSelectedProfile?.Invoke(selectedProfile.ProfileName);
