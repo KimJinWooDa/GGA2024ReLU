@@ -143,8 +143,8 @@ MonoBehaviour:
   m_text: 'Uses whisper model for STT, it recognizes things fast. There are 3 models
     of the whisper STT. '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3015d2c5ebbad4fbc944c8238764609f, type: 2}
-  m_sharedMaterial: {fileID: -6245147879248726382, guid: 3015d2c5ebbad4fbc944c8238764609f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6ccc1c9dc2fa7c34c838cc57614e13ff, type: 2}
+  m_sharedMaterial: {fileID: 3108579329576760681, guid: 6ccc1c9dc2fa7c34c838cc57614e13ff, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
