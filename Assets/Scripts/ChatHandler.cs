@@ -20,6 +20,7 @@ public class ResponseData
     public int rating { get; set; }
     public string text { get; set; }
     public Emotion emotion { get; set; }
+    public bool isConfession { get; set; }
 }
 public class ChatHandler : MonoBehaviour
 {
@@ -97,20 +98,25 @@ public class ChatHandler : MonoBehaviour
         CharacterPrompt selectedProfile = characterPromptDict[selectedProfileName];
         if (selectedProfile.isConfession)
         {
-            characterPrompt = selectedProfile.confessionPrompt;
+            characterPrompt = selectedProfile.generalPrompt + selectedProfile.confessionPrompt;
         }
         else
         {
-            characterPrompt = selectedProfile.prompt;
+            characterPrompt = selectedProfile.generalPrompt + selectedProfile.beforeConfessionPrompt;
         }
         
-        yield return claudeClient.GetResponseCoroutine(characterPrompt, userMessage, (response) =>
+        yield return claudeClient.GetResponseCoroutine(characterPrompt, selectedProfile.triggerPrompt, userMessage, (response) =>
         {
             try
             {
                 ResponseData responseData = JsonConvert.DeserializeObject<ResponseData>(response);
                 displayClaudeText.text = responseData.text; // Claude의 응답을 텍스트에 표시
                 informationPanel.OnResponseReceived(responseData.rating, responseData.text, responseData.emotion);
+                if (responseData.isConfession)
+                {
+                    informationPanel.SetToggle(true);
+                    selectedProfile.isConfession = responseData.isConfession;
+                }                
             }
             catch (Exception ex)
             {

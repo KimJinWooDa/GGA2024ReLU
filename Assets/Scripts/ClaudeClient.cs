@@ -30,9 +30,12 @@ public class ClaudeClient : MonoBehaviour
         'emotion': {
           'type': 'string',
           'enum': ['Anger', 'Sadness', 'Joy', 'Neutral', 'Excitement', 'Fear']
+        },
+        'isConfession': {
+          'type': 'boolean'
         }
       },
-      'required': ['rating', 'text', 'emotion']
+      'required': ['rating', 'text', 'emotion', 'isConfession']
     }";
 
     private void Start()
@@ -42,9 +45,9 @@ public class ClaudeClient : MonoBehaviour
         
     }
 
-    public IEnumerator GetResponseCoroutine(string promptMessage, string userMessage, Action<string> callback)
+    public IEnumerator GetResponseCoroutine(string promptMessage, string triggerMessage, string userMessage, Action<string> callback)
     {
-        Task<string> task = GetResponseAsync(promptMessage, userMessage);
+        Task<string> task = GetResponseAsync(promptMessage, triggerMessage, userMessage);
         while (!task.IsCompleted)
         {
             yield return null;
@@ -61,7 +64,7 @@ public class ClaudeClient : MonoBehaviour
         }
     }
 
-    private async Task<string> GetResponseAsync(string promptMessage, string userMessage)
+    private async Task<string> GetResponseAsync(string promptMessage, string triggerMessage, string userMessage)
     {
         try
         {
@@ -89,6 +92,8 @@ public class ClaudeClient : MonoBehaviour
                 {jsonSchema}
 
                 Query: {userMessage}
+
+                If {triggerMessage} is not empty, also perform the following: If the query contains any information along the lines of {triggerMessage}, respond 'isConfession' value as true. Otherwise, respond 'isConfession' value as false.
 
                 Ensure all values conform to the specified types and constraints. Do not include any explanations or additional text outside the JSON structure.";
 

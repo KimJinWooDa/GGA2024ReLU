@@ -1,15 +1,20 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class CharacterPrompt
 {
     public string characterName;
+    [TextArea] 
+    public string generalPrompt;
     [TextArea]
-    public string prompt;
+    public string beforeConfessionPrompt;
     [TextArea]
     public string confessionPrompt;
+    [TextArea] 
+    public string triggerPrompt;
     public bool isConfession;
 }
 
