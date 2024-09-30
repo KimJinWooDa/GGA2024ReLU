@@ -37,6 +37,16 @@ public class ClaudeClient : MonoBehaviour
       },
       'required': ['rating', 'text', 'emotion', 'isConfession']
     }";
+    private const string jsonVerificationSchema = @"
+    {
+      'type': 'object',
+      'properties': {
+        'isConfession': {
+          'type': 'boolean'
+        }
+      },
+      'required': ['isConfession']
+    }";
 
     private void Start()
     {
@@ -45,9 +55,27 @@ public class ClaudeClient : MonoBehaviour
         
     }
 
-    public IEnumerator GetResponseCoroutine(string promptMessage, string triggerMessage, string userMessage, Action<string> callback)
+    public IEnumerator GetResponseCoroutine(string promptMessage, string userMessage, Action<string> callback)
     {
-        Task<string> task = GetResponseAsync(promptMessage, triggerMessage, userMessage);
+        Task<string> task = GetResponseAsync(promptMessage, userMessage);
+        while (!task.IsCompleted)
+        {
+            yield return null;
+        }
+
+        if (task.Exception != null)
+        {
+            Debug.LogError($"Claude API request failed: {task.Exception.Message}");
+            callback("Error: Unable to get response.");
+        }
+        else
+        {
+            callback(task.Result);
+        }
+    }
+    public IEnumerator GetVerificationResponseCoroutine(string triggerMessage, string userMessage, Action<string> callback)
+    {
+        Task<string> task = GetVerificationResponseAsync(triggerMessage, userMessage);
         while (!task.IsCompleted)
         {
             yield return null;
@@ -64,7 +92,7 @@ public class ClaudeClient : MonoBehaviour
         }
     }
 
-    private async Task<string> GetResponseAsync(string promptMessage, string triggerMessage, string userMessage)
+    private async Task<string> GetResponseAsync(string promptMessage, string userMessage)
     {
         try
         {
@@ -92,8 +120,6 @@ public class ClaudeClient : MonoBehaviour
                 {jsonSchema}
 
                 Query: {userMessage}
-
-                If {triggerMessage} is not empty, also perform the following: If the query contains any information along the lines of {triggerMessage}, respond 'isConfession' value as true. Otherwise, respond 'isConfession' value as false.
 
                 Ensure all values conform to the specified types and constraints. Do not include any explanations or additional text outside the JSON structure.";
 
@@ -127,4 +153,52 @@ public class ClaudeClient : MonoBehaviour
             return "Error: Unable to get response.";
         }
     }
+    private async Task<string> GetVerificationResponseAsync(string triggerMessage, string userMessage)
+    {
+        try
+        {
+            string formattedUserMessage = $@"
+            Respond to the following query in JSON format, strictly adhering to this schema:
+            {jsonVerificationSchema}
+
+            Check if the user message contains the words or phrases or says something along the lines in the trigger message:
+            Trigger Message: '{triggerMessage}'
+            User Message: '{userMessage}'
+
+            If any part of the user message contains information that matches or resembles the trigger message, set 'isConfession' to true. Otherwise, set 'isConfession' to false.
+
+            Ensure all values conform to the specified types and constraints. Do not include any explanations or additional text outside the JSON structure.";
+
+            var requestBody = new
+            {
+                model = "claude-3-opus-20240229",
+                max_tokens = 1024,
+                messages = new[]
+                {
+                    new { role = "user", content = formattedUserMessage }
+                },
+                //system = systemMessage
+            };
+
+            var json = JsonConvert.SerializeObject(requestBody);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await httpClient.PostAsync(API_URL, content);
+            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
+
+            var jsonResponse = JObject.Parse(responseBody);
+            var responseText = jsonResponse["content"][0]["text"].ToString();
+
+            var parsedJson = JObject.Parse(responseText);
+            return parsedJson.ToString(Formatting.Indented);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"Claude API request failed: {ex.Message}");
+            return "Error: Unable to get response.";
+        }
+    }
+    
+    
 }

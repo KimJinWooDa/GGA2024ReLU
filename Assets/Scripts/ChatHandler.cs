@@ -20,6 +20,10 @@ public class ResponseData
     public int rating { get; set; }
     public string text { get; set; }
     public Emotion emotion { get; set; }
+}
+
+public class VerificationData
+{
     public bool isConfession { get; set; }
 }
 public class ChatHandler : MonoBehaviour
@@ -96,36 +100,67 @@ public class ChatHandler : MonoBehaviour
 
         string characterPrompt = string.Empty;
         CharacterPrompt selectedProfile = characterPromptDict[selectedProfileName];
-        if (selectedProfile.isConfession)
+
+        if (!selectedProfile.isConfession)
         {
-            characterPrompt = selectedProfile.generalPrompt + selectedProfile.confessionPrompt;
+            yield return StartCoroutine(VerifyMessage(selectedProfile.triggerPrompt, userMessage, (isConfession) =>
+            {
+                if (isConfession)
+                {
+                    selectedProfile.isConfession = isConfession;
+                    informationPanel.SetToggle(true);
+                    characterPrompt = selectedProfile.generalPrompt + selectedProfile.confessionPrompt;
+                }
+                else
+                {
+                    characterPrompt = selectedProfile.generalPrompt + selectedProfile.beforeConfessionPrompt;
+                }
+            }));
         }
         else
         {
-            characterPrompt = selectedProfile.generalPrompt + selectedProfile.beforeConfessionPrompt;
+            characterPrompt = selectedProfile.generalPrompt + selectedProfile.confessionPrompt;
         }
         
-        yield return claudeClient.GetResponseCoroutine(characterPrompt, selectedProfile.triggerPrompt, userMessage, (response) =>
+        yield return StartCoroutine(SendMessageToClaude(characterPrompt, userMessage));
+        
+        loadingIndicator.SetActive(false);
+    }
+
+    private IEnumerator VerifyMessage(string triggerMessage, string userMessage, Action<bool> callback)
+    {
+        yield return claudeClient.GetVerificationResponseCoroutine(triggerMessage, userMessage, (response) =>
+        {
+            try
+            {
+                VerificationData verificationData = JsonConvert.DeserializeObject<VerificationData>(response);
+                callback(verificationData.isConfession);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"Failed to deserialize the verification response: {ex.Message}");
+                callback(false); //default to false if error 
+            }
+        });
+    }
+
+    private IEnumerator SendMessageToClaude(string prompt, string userMessage)
+    {
+        yield return claudeClient.GetResponseCoroutine(prompt, userMessage, (response) =>
         {
             try
             {
                 ResponseData responseData = JsonConvert.DeserializeObject<ResponseData>(response);
-                displayClaudeText.text = responseData.text; // Claude의 응답을 텍스트에 표시
+                displayClaudeText.text = responseData.text;
                 informationPanel.OnResponseReceived(responseData.rating, responseData.text, responseData.emotion);
-                if (responseData.isConfession)
-                {
-                    informationPanel.SetToggle(true);
-                    selectedProfile.isConfession = responseData.isConfession;
-                }                
             }
             catch (Exception ex)
             {
                 Debug.LogWarning($"Failed to deserialize the response: {ex.Message}");
-                displayClaudeText.text = "\nClaude: " + response;  // Claude의 응답을 텍스트에 추가로 표시
+                displayClaudeText.text = "\nClaude: " + response;
             }
+
             displayClaudeText.gameObject.SetActive(true);
         });
-        
-        loadingIndicator.SetActive(false);
     }
 }
