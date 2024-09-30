@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -157,15 +158,26 @@ public class ClaudeClient : MonoBehaviour
     {
         try
         {
+            List<string> triggerMessages = triggerMessage.Split(',').Select(t => t.Trim()).ToList();
+            string triggerMessagesJson = JsonConvert.SerializeObject(triggerMessages);
+            
+            string systemMessage = "You are an AI assistant that always responds in the exact JSON format specified by the user. Follow the schema precisely.";
             string formattedUserMessage = $@"
             Respond to the following query in JSON format, strictly adhering to this schema:
             {jsonVerificationSchema}
 
-            Check if the user message contains the words or phrases or says something along the lines in the trigger message:
-            Trigger Message: '{triggerMessage}'
+            Below is a list of trigger messages and the user message:
+            Trigger Messages: {triggerMessagesJson}
             User Message: '{userMessage}'
 
-            If any part of the user message contains information that matches or resembles the trigger message, set 'isConfession' to true. Otherwise, set 'isConfession' to false.
+            Check if the user message contains knowledge of any of the trigger messages. Make sure to consider the context when determining if the user message contains any trigger message. 
+
+            Here are some guidelines to help you:
+            - If the trigger message is 'I love you' and the user message is 'I love ice cream,' do NOT consider it to contain the trigger message.
+            - If the trigger message is 'House is on fire' and the user message is 'I'm on fire today' or 'House is on water,' do NOT consider it to contain the trigger message.
+            - If the trigger message is 'Potatoes are on fire' and the user message is 'Potatoes are wet,' do NOT consider it to contain the trigger message.
+
+            If the user message contains information that directly matches or is contextually similar to any of the trigger messages, set 'isConfession' to true. Otherwise, set 'isConfession' to false.
 
             Ensure all values conform to the specified types and constraints. Do not include any explanations or additional text outside the JSON structure.";
 
@@ -177,7 +189,7 @@ public class ClaudeClient : MonoBehaviour
                 {
                     new { role = "user", content = formattedUserMessage }
                 },
-                //system = systemMessage
+                system = systemMessage
             };
 
             var json = JsonConvert.SerializeObject(requestBody);
