@@ -10,6 +10,9 @@
 5. [Claude](/docs/claude.md)
 6. [Unity Sentis Microsoft Phi 1.5](/docs/phi-1.5.md)
 
+### 기타 참고
+- [STT 씬 세팅](docs/stt_settings.md)  
+- [LLM 씬 세팅](docs/llm_settings.md)
 ***
 
 ### TODO
