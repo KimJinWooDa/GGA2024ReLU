@@ -44,8 +44,8 @@ MonoBehaviour:
       and posture reflecting your inner struggle. \" +\r\n                \"You express
       the heaviness of existence in every situation, emphasizing the inevitable sadness
       and emotional weight of life.\";"
-    triggerPrompt: ruby floats on water, husband tricked to think he can swim, financial
-      problems with Mr. Finance
+    triggerPrompt: ruby floats on water, husband tricked to think he can swim, had
+      financial problems with Mr. Finance
     isConfession: 0
   - characterName: Henry
     generalPrompt: 'You are a swim instructor. '
