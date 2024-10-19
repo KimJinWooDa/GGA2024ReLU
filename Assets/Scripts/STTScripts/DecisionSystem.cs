@@ -271,8 +271,8 @@ public class DecisionSystem : MonoBehaviour
         }
 
         inTranscribedString = CleanString(inTranscribedString);
-        Debug.Log("Transcribed string: " + inTranscribedString);
-        Debug.Log("Answer string: " + answerString);
+        // Debug.Log("Transcribed string: " + inTranscribedString);
+        // Debug.Log("Answer string: " + answerString);
         
         if (stringCompareType == StringCompareType.Phoneme)
         {

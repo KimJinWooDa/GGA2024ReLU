@@ -79,41 +79,41 @@ public class RunWhisper : MonoBehaviour
         //vocab dictionary to be saved and used in decoding elsewhere 
         vocab = d.ToDictionary(entry => entry.Key, entry => entry.Value);
 
-        List<byte[]> decodedBytesList = new List<byte[]>();
-        int[] values = { 45326, 120, 4815, 48267, 1517, 15933, 250, 119, 3049 }; // == ID 
-        foreach (int v in values)
-        {
-            if (d.ContainsKey(v))
-            {
-                string base64String = d[v];
-                try
-                {
-                    byte[] decodedBytes = Convert.FromBase64String(base64String);
-                    decodedBytesList.Add(decodedBytes);
-                }
-                catch (FormatException ex)
-                {
-                    Debug.LogWarning($"Warning: Error decoding Base64 for value {v}: {ex.Message}");
-                }
-            }
-            else
-            {
-                Debug.LogWarning($"Warning: Value {v} not found in the dictionary.");
-            }
-        }
+        // List<byte[]> decodedBytesList = new List<byte[]>();
+        // int[] values = { 45326, 120, 4815, 48267, 1517, 15933, 250, 119, 3049 }; // == ID 
+        // foreach (int v in values)
+        // {
+        //     if (d.ContainsKey(v))
+        //     {
+        //         string base64String = d[v];
+        //         try
+        //         {
+        //             byte[] decodedBytes = Convert.FromBase64String(base64String);
+        //             decodedBytesList.Add(decodedBytes);
+        //         }
+        //         catch (FormatException ex)
+        //         {
+        //             Debug.LogWarning($"Warning: Error decoding Base64 for value {v}: {ex.Message}");
+        //         }
+        //     }
+        //     else
+        //     {
+        //         Debug.LogWarning($"Warning: Value {v} not found in the dictionary.");
+        //     }
+        // }
 
-        byte[] resultBytes = decodedBytesList.SelectMany(b => b).ToArray();
+        // byte[] resultBytes = decodedBytesList.SelectMany(b => b).ToArray();
 
-        Debug.Log("Byte Array: " + BitConverter.ToString(resultBytes));
-        try
-        {
-            string decodedString = System.Text.Encoding.UTF8.GetString(resultBytes);
-            Debug.Log("Decoded String: " + decodedString);
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError("Error decoding bytes to UTF-8: " + ex.Message);
-        }
+        // Debug.Log("Byte Array: " + BitConverter.ToString(resultBytes));
+        // try
+        // {
+        //     string decodedString = System.Text.Encoding.UTF8.GetString(resultBytes);
+        //     Debug.Log("Decoded String: " + decodedString);
+        // }
+        // catch (Exception ex)
+        // {
+        //     Debug.LogError("Error decoding bytes to UTF-8: " + ex.Message);
+        // }
     }
 
     public void ReloadModel(DecisionSystem.WhisperModel inModel)
@@ -242,13 +242,13 @@ public class RunWhisper : MonoBehaviour
             }
             else
             {
-                Debug.Log($"token[ID]={tokens[ID]}");
+                // Debug.Log($"token[ID]={tokens[ID]}");
                 //outputString += GetUnicodeText(tokens[ID]);
                 outputString += DecodeID(ID);
             }
 
             Debug.Log(outputString);
-            Debug.Log(string.Join(", ", outputTokens));
+            // Debug.Log(string.Join(", ", outputTokens));
         }
     }
 
@@ -272,7 +272,7 @@ public class RunWhisper : MonoBehaviour
             Debug.LogWarning($"Warning: Value {id} not found in the dictionary.");
         }
 
-        Debug.Log("Byte Array: " + BitConverter.ToString(decodedBytes));
+        // Debug.Log("Byte Array: " + BitConverter.ToString(decodedBytes));
         // string decodedString = string.Empty;
         // try
         // {

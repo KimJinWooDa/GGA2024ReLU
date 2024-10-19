@@ -28,9 +28,36 @@ public class MicrophoneRecorder : MonoBehaviour
 
     // 오디오 파일 저장 경로
     private string saveFilePath;
+    private string selectedMicrophone = null;
+    
+    [SerializeField]
+    private int microphoneIndex = -1;
 
     void Start()
     {
+
+        // Get all available microphone devices
+        string[] microphones = Microphone.devices;
+
+        if (microphones.Length > 0)
+        {
+            Debug.Log("Available microphones:");
+            for (int i = 0; i < microphones.Length; i++)
+            {
+                Debug.Log(i + ": " + microphones[i]);
+            }
+        }
+        else
+        {
+            Debug.Log("No microphones available.");
+        }
+
+        if (microphoneIndex != -1){
+            selectedMicrophone = microphones[microphoneIndex];
+        }
+
+        Debug.Log("Selected microphone: " + selectedMicrophone);
+
         // 버튼에 메서드 연결
         if (startRecordingButton != null && stopRecordingButton != null)
         {
@@ -48,7 +75,7 @@ public class MicrophoneRecorder : MonoBehaviour
     public void StartRecording()
     {
         // 녹음 시작
-        recordedClip = Microphone.Start(null, false, 30, 16000);
+        recordedClip = Microphone.Start(selectedMicrophone, false, 30, 16000);
 
         // 마이크로부터 녹음이 시작될 때까지 대기
         while (!(Microphone.GetPosition(null) > 0)) { }

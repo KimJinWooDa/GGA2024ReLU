@@ -1410,6 +1410,7 @@ MonoBehaviour:
   whisperEngine: {fileID: 732537745}
   transcriptionDisplay: {fileID: 1806973486}
   resultDisplay: {fileID: 0}
+  microphoneIndex: 0
 --- !u!4 &176369105
 Transform:
   m_ObjectHideFlags: 0
