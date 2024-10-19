@@ -43,7 +43,7 @@ public class AzureSTT : MonoBehaviour
     {
         // Creates an instance of a speech config with specified subscription key and service region.
         // Replace with your own subscription key and service region (e.g., "westus").
-        var config = SpeechConfig.FromSubscription("a600db237b3d4b6f9c81e0a304482394", "koreacentral");
+        var config = SpeechConfig.FromSubscription("39bae6cc65a2479da65e61f971077ebf", "koreacentral");
 
         config.SpeechRecognitionLanguage = "ko-KR";
 

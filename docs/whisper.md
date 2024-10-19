@@ -35,4 +35,8 @@ https://docs.unity3d.com/Packages/com.unity.sentis@1.5/manual/serialize-a-model.
 
 * Whisper Tiny, Base, Small, Medium, Large 
 
+### 각자 개발해보기
+
+* 각자 상상하는 기능의 요구 사항에 맞추어 Whisper Model 적용하기
+* 음성 입력 종료 시점을 버튼 입력 없이 인식하기
 * 

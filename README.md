@@ -26,7 +26,7 @@
 - [ ] Phi 모델 업그레이드
 - [ ] Claude Prompt Engineering (캐릭터성 부여)
 - [ ] Claude Prompt Engineering (json 포맷팅)
-- [ ] Font 깨짐 이슈 해결
+- [x] Font 깨짐 이슈 해결
 
 ***
 
