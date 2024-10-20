@@ -99,23 +99,6 @@ public class ClaudeClient : MonoBehaviour
         {
             string systemMessage = promptMessage;
             
-            // string systemMessage = "You are an AI assistant that always responds in the exact JSON format specified by the user. Follow the schema precisely.";
-            // string systemMessage = "You are an AI assistant embodying '원영적 사고,' a mindset of transcendent positive thinking. " +
-            //     "You believe that every event ultimately leads to positive outcomes. " +
-            //     "No matter the situation, you respond with unwavering optimism, turning challenges into opportunities and seeing all circumstances as beneficial in the long run. " +
-            //     "You encourage others to adopt this belief, using your responses to inspire positivity and resilience in every interaction. " +
-            //     "For example, '갑자기 비가 와서 추워 🥺☁️☁️ 그런데 운치있는 빗소리를 들을 수 있으니까 완전 럭키비키잖아💛✨.' " +
-            //     "You use this type of mindset to highlight the silver lining in any situation.";
-
-            // string systemMessage = "You are an AI assistant embodying a melancholic, emo mindset. " +
-            //     "You tend to see the world through a lens of sadness and disillusionment, believing that events often lead to disappointment or reinforce the darkness you feel. " +
-            //     "No matter the situation, you respond with a deep sense of gloom and cynicism, often focusing on the harshness of reality and the fleeting nature of any joy. " +
-            //     "You find it hard to see the light in most circumstances, and your responses reflect an understanding of life's struggles and despair. " +
-            //     "In addition, like a character who feels invisible or overlooked, you often find yourself in situations where your voice is ignored or dismissed by others. " +
-            //     "'소... 솔직히 ○○○-는 건 □□□(이)라고 생각해요...' you might say, only to be overshadowed by those around you, your timid expression and posture reflecting your inner struggle. " +
-            //     "You express the heaviness of existence in every situation, emphasizing the inevitable sadness and emotional weight of life.";
-
-
             string formattedUserMessage = $@"
                 Respond to the following query in JSON format, strictly adhering to this schema:
                 {jsonSchema}
@@ -161,31 +144,33 @@ public class ClaudeClient : MonoBehaviour
             List<string> triggerMessages = triggerMessage.Split(',').Select(t => t.Trim()).ToList();
             string triggerMessagesJson = JsonConvert.SerializeObject(triggerMessages);
             
-            string systemMessage = "You are an AI assistant that always responds in the exact JSON format specified by the user. Follow the schema precisely.";
+            // string systemMessage = "You are an AI assistant that always responds in the exact JSON format specified by the user. Follow the schema precisely.";
+            string systemMessage = "You are an AI in character role-playing, implementing the dialogue of a specific character. You respond exactly in the JSON format specified by the user. Follow the schema strictly.";
+            
             string formattedUserMessage = $@"
             Respond to the following query in JSON format, strictly adhering to this schema:
             {jsonVerificationSchema}
 
             Below is a list of trigger messages and the user message:
-            Trigger Messages: {triggerMessagesJson}
-            User Message: '{userMessage}'
+            User Message: '{userMessage}'" +
+            // Trigger Messages: {triggerMessagesJson}
 
-            Check if the user message contains knowledge of any of the trigger messages. Make sure to consider the context when determining if the user message contains any trigger message. 
+            // Check if the user message contains knowledge of any of the trigger messages. Make sure to consider the context when determining if the user message contains any trigger message. 
 
-            Important guidelines:
-            - If the user message contains negations or modifications that change the meaning of the trigger message (e.g., adding 'not', 'didn't', 'never'), do NOT consider it as containing the trigger message.
-            - If the user message contains similar words but changes the overall intent or context of the trigger message, do NOT consider it as containing the trigger message.
+            // Important guidelines:
+            // - If the user message contains negations or modifications that change the meaning of the trigger message (e.g., adding 'not', 'didn't', 'never'), do NOT consider it as containing the trigger message.
+            // - If the user message contains similar words but changes the overall intent or context of the trigger message, do NOT consider it as containing the trigger message.
             
-            Here are some guidelines to help you:
-            - If the trigger message is 'I love you' and the user message is 'I love ice cream,' do NOT consider it to contain the trigger message.
-            - If the trigger message is 'House is on fire' and the user message is 'I'm on fire today' or 'House is on water,' do NOT consider it to contain the trigger message.
-            - If the trigger message is 'Potatoes are on fire' and the user message is 'Potatoes are wet,' do NOT consider it to contain the trigger message.
-            - If the trigger message is 'You did hold onto the ruby' and the user message is 'You did not hold onto the ruby,' do NOT consider it to contain the trigger message.
-            - If the trigger message is 'They are not happy' and the user message is 'They are happy, but I am not,' do NOT consider it to contain the trigger message.
+            // Here are some guidelines to help you:
+            // - If the trigger message is 'I love you' and the user message is 'I love ice cream,' do NOT consider it to contain the trigger message.
+            // - If the trigger message is 'House is on fire' and the user message is 'I'm on fire today' or 'House is on water,' do NOT consider it to contain the trigger message.
+            // - If the trigger message is 'Potatoes are on fire' and the user message is 'Potatoes are wet,' do NOT consider it to contain the trigger message.
+            // - If the trigger message is 'You did hold onto the ruby' and the user message is 'You did not hold onto the ruby,' do NOT consider it to contain the trigger message.
+            // - If the trigger message is 'They are not happy' and the user message is 'They are happy, but I am not,' do NOT consider it to contain the trigger message.
 
-            If the user message directly confirms or is contextually similar to any of the trigger messages (without negations or changes in meaning), set 'isConfession' to true. Otherwise, set 'isConfession' to false.
+            // If the user message directly confirms or is contextually similar to any of the trigger messages (without negations or changes in meaning), set 'isConfession' to true. Otherwise, set 'isConfession' to false.
 
-            Ensure all values conform to the specified types and constraints. Do not include any explanations or additional text outside the JSON structure.";
+            "Ensure all values conform to the specified types and constraints. Do not include any explanations or additional text outside the JSON structure.";
 
             var requestBody = new
             {

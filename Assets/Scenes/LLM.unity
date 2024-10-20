@@ -867,7 +867,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileName
-      value: Henry
+      value: Reginald
       objectReference: {fileID: 0}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileSprite
@@ -879,17 +879,22 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 3f423f18bae754a7dbae893a08d00eef, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: InformationString
-      value: "Name: Henry \nAge: 35\nOccupation: Swim Instructor\nRelation to victim:
-        instructor\n\n\n\uD5E8\uB9AC\uB294 \uD53C\uD574\uC790\uC758 \uC694\uD2B8
-        2\uCE35\uC5D0\uC11C \uC5EC\uC720\uB97C \uC990\uAE30\uACE0 \uC788\uC5C8\uC2B5\uB2C8\uB2E4.
-        \uD53C\uD574\uC790\uB294 \uC774\uC81C \uD63C\uC790\uC11C \uC218\uC601\uD560
-        \uC790\uC2E0\uC774 \uC788\uC73C\uB2C8 \uAC71\uC815 \uB9D0\uACE0 \uD3B8\uD788
-        \uC26C\uB77C\uACE0 \uADF8\uC5D0\uAC8C \uB9D0\uD588\uC2B5\uB2C8\uB2E4.\n\n\uC804\uB0A0
-        \uBC24 \uC9C0\uCE5C \uC0C1\uD0DC\uB85C \uD30C\uD2F0\uC5D0 \uCC38\uC11D\uD588\uB358
-        \uD5E8\uB9AC\uB294 \uC7A0\uC2DC \uC26C\uACE0 \uC2F6\uC5B4 \uD588\uC2B5\uB2C8\uB2E4.
-        \uCE75\uD14C\uC77C \uC794\uC744 \uC190\uC5D0 \uB4E4\uACE0 \uD5E4\uB4DC\uD3F0\uC744
-        \uB07C\uACE0 \uC788\uC5C8\uAE30 \uB54C\uBB38\uC5D0 \uD30C\uC774\uB0B8\uC2A4
-        \uC528\uC758 \uB3C4\uC6C0 \uC694\uCCAD\uC744 \uB4E3\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4."
+      value: "\uC774\uB984: \uB808\uC774\uB110\uB4DC\n\uC9C1\uC5C5: \uC9D1\uC0AC\n\n\"\uB808\uC774\uB110\uB4DC\"\uB294
+        \uC774 \uC800\uD0DD\uC758 \uC9D1\uC0AC\uB85C, \"\uBE44\uBE44\uC548\"\uC774
+        \uD0DC\uC5B4\uB098\uAE30 \uC804\uBD80\uD130 \uC800\uD0DD\uC744 \uCCA0\uC800\uD558\uAC8C
+        \uAD00\uB9AC\uD574\uC654\uC2B5\uB2C8\uB2E4. \uADF8\uB294 \uC6D0\uB9AC\uC640
+        \uC6D0\uCE59\uC744 \uC911\uC694\uC2DC\uD558\uBA70, \uB9E4\uC6B0 \uC5C4\uACA9\uD558\uACE0
+        \uAE50\uAE50\uD55C \uC131\uACA9\uC744 \uAC00\uC9C0\uACE0 \uC788\uC2B5\uB2C8\uB2E4.
+        \uBB34\uC5C7\uBCF4\uB2E4\uB3C4 \uC800\uD0DD\uC774 \uD654\uBAA9\uD558\uACE0
+        \uD3C9\uD654\uB86D\uAC8C \uC720\uC9C0\uB418\uB294 \uAC83\uC774 \uADF8\uC5D0\uAC8C
+        \uAC00\uC7A5 \uC911\uC694\uD55C \uAC00\uCE58\uC785\uB2C8\uB2E4.\n\n\"\uB808\uC774\uB110\uB4DC\"\uB294
+        \uAC00\uC815\uBD80 \"\uBAB0\uB9AC\"\uC758 \uD3C9\uC18C \uC131\uC2E4\uD55C
+        \uD0DC\uB3C4\uB97C \uACE0\uB824\uD588\uC744 \uB54C, \uADF8\uB140\uAC00 \uCF00\uC774\uD06C\uB97C
+        \uBA39\uAC70\uB098 \uC228\uAE38 \uAC00\uB2A5\uC131\uC740 \uC5C6\uB2E4\uACE0
+        \uD655\uC2E0\uD569\uB2C8\uB2E4. \n\n\uB300\uC2E0, \"\uBE44\uBE44\uC548\"\uC774
+        \uCF00\uC774\uD06C\uB97C \uD558\uB098 \uB354 \uBA39\uACE0 \uC2F6\uC5B4\uC11C
+        \uC77C\uBD80\uB7EC \uAC70\uC9D3\uB9D0\uC744 \uD558\uACE0 \uC788\uB2E4\uACE0
+        \uC0DD\uAC01\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: DefaultProfileSprite
@@ -905,7 +910,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: e91c305d8c4fca640bd6fb8f7f237a63, type: 3}
     - target: {fileID: 7400840336766489238, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Name
-      value: Henry
+      value: Reginald
       objectReference: {fileID: 0}
     - target: {fileID: 8862955690504552892, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Pivot.x
@@ -2165,27 +2170,27 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD30C\uC774\uB0B8\uC2A4 \uC528\uB294 \uADF8\uB9AC\uC2A4\uC5D0\uC11C \uC544\uB0B4\uC640
-    \uD734\uAC00\uB97C \uC990\uAE30\uB358 \uC911 \uC775\uC0AC\uD588\uC2B5\uB2C8\uB2E4.
-    \uADF8\uB294 \uC790\uC2E0\uC758 \uAC1C\uC778 \uC694\uD2B8\uC5D0\uC11C \uC218\uC601
-    \uAC15\uC0AC, \uC544\uB0B4, \uADF8\uB9AC\uACE0 \uBC18\uB824\uACAC \uCE74\uC77C\uACFC
-    \uD568\uAED8 \uC788\uC5C8\uC2B5\uB2C8\uB2E4.\n\n\uD30C\uC774\uB0B8\uC2A4 \uC528\uB294
-    \uC218\uC601 \uAC15\uC2B5\uACFC \uC9D1\uC5D0\uC11C\uC758 \uC5F0\uC2B5 \uB355\uBD84\uC5D0
-    \uB4DC\uB514\uC5B4 \uC218\uC601\uD560 \uC218 \uC788\uB2E4\uB294 \uAE30\uC068\uC5D0
-    \uB118\uCCD0 \uBC14\uB2E4\uB85C \uB6F0\uC5B4\uB4E4\uC5C8\uC2B5\uB2C8\uB2E4. \uD558\uC9C0\uB9CC
-    \uACE7 \uACF5\uD3EC\uC5D0 \uC0AC\uB85C\uC7A1\uD600 \"\uC774\uAC74 \uB0B4\uAC00
-    \uC0DD\uAC01\uD55C \uAC8C \uC544\uB2C8\uC57C!\"\uB77C\uACE0 \uC678\uCE58\uBA70
-    \uD544\uC0AC\uC801\uC73C\uB85C \uB3C4\uC6C0\uC744 \uC694\uCCAD\uD588\uC2B5\uB2C8\uB2E4.\n\n\uADF8\uB7EC\uB098
-    \uADF8\uC758 \uC218\uC601 \uAC15\uC0AC \uD5E8\uB9AC\uB294 \uC694\uD2B8 2\uCE35\uC5D0\uC11C
-    \uD5E4\uB4DC\uD3F0\uC744 \uB07C\uACE0 \uCE75\uD14C\uC77C\uC744 \uC990\uAE30\uACE0
-    \uC788\uC5C8\uC2B5\uB2C8\uB2E4. \uACB0\uAD6D \uD30C\uC774\uB0B8\uC2A4 \uC528\uC758
-    \uC544\uB0B4\uAC00 \uAD6C\uD574\uC8FC\uC5C8\uC9C0\uB9CC, \uC774\uBBF8 \uB108\uBB34
-    \uB2A6\uC5C8\uC2B5\uB2C8\uB2E4. \uBC14\uB2F7\uBB3C\uC774 \uADF8\uC758 \uD3D0\uC5D0
-    \uBE60\uB974\uAC8C \uCC28\uC62C\uB790\uACE0, \uBCD1\uC6D0\uC73C\uB85C \uC774\uC1A1\uB41C
-    \uD6C4 \uC5BC\uB9C8 \uC9C0\uB098\uC9C0 \uC54A\uC544 \uC0AC\uB9DD\uD588\uC2B5\uB2C8\uB2E4.\n\n\uBAA8\uB4E0
-    \uC0AC\uB78C\uB4E4\uC740 \uADF8\uC800 \uC0AC\uACE0\uB77C\uACE0 \uC0DD\uAC01\uD588\uC9C0\uB9CC,
-    \uD55C \uBA85\uC758 \uD0D0\uC815\uC740 \uADF8\uB807\uC9C0 \uC54A\uB2E4\uACE0
-    \uC8FC\uC7A5\uD588\uC2B5\uB2C8\uB2E4. "
+  m_text: "\"\uBE44\uBE44\uC548\"\uC740 \uBCF8\uC778\uC758 \uBC29\uC5D0\uC11C \uCE5C\uAD6C\uC640
+    \uD568\uAED8 \uB2E4\uACFC\uB97C \uC990\uAE30\uACE0 \uC788\uC5C8\uC2B5\uB2C8\uB2E4.
+    \uADF8\uB140\uAC00 \uAC00\uC7A5 \uC88B\uC544\uD558\uB294 \uC0C8\uBE68\uAC04 \uCCB4\uB9AC\uAC00
+    \uC62C\uB77C\uAC04 \uCF00\uC774\uD06C\uAC00 \uC624\uB298\uC758 \uBC31\uBBF8\uC600\uC2B5\uB2C8\uB2E4.\r\n\r\n\"\uC9F9\uC9F9\uC774\"\uB97C
+    \uAD6C\uACBD\uD558\uBA70 \uB2E4\uACFC\uB97C \uC990\uAE30\uB358 \uB3C4\uC911,
+    \"\uBE44\uBE44\uC548\"\uC740 \uCE5C\uAD6C\uC640 \uD568\uAED8 \uC815\uC6D0\uC73C\uB85C
+    \uC0B0\uCC45\uC744 \uB098\uC130\uACE0, \uC815\uC6D0\uC5D0\uC11C \uAF43\uC5D0
+    \uBB3C\uC744 \uC8FC\uB358 \"\uBAB0\uB9AC\"\uB97C \uB9CC\uB0AC\uC2B5\uB2C8\uB2E4.
+    \"\uBE44\uBE44\uC548\"\uC740 \"\uBAB0\uB9AC\"\uC5D0\uAC8C \uB0A8\uC740 \uB514\uC800\uD2B8\uB97C
+    \uB098\uC911\uC5D0 \uBA39\uC744 \uC218 \uC788\uB3C4\uB85D \uC8FC\uBC29\uC73C\uB85C
+    \uCE58\uC6CC\uB2EC\uB77C\uACE0 \uBD80\uD0C1\uD588\uC2B5\uB2C8\uB2E4.\r\n\r\n\uADF8\uB7EC\uB098
+    \"\uBE44\uBE44\uC548\"\uC774 \uC8FC\uBC29\uC73C\uB85C \uBAB0\uB798 \uB4E4\uC5B4\uAC00
+    \uB0C9\uC7A5\uACE0\uB97C \uC5F4\uC5C8\uC744 \uB54C, \uB2E4\uB978 \uB514\uC800\uD2B8\uB294
+    \uC788\uC5C8\uC9C0\uB9CC, \uCCB4\uB9AC \uCF00\uC774\uD06C\uB9CC \uC0AC\uB77C\uC9C4
+    \uAC83\uC744 \uBC1C\uACAC\uD588\uC2B5\uB2C8\uB2E4. \"\uBE44\uBE44\uC548\"\uC740
+    \"\uBAB0\uB9AC\"\uC5D0\uAC8C \uC5B4\uB5BB\uAC8C \uB41C \uC601\uBB38\uC778\uC9C0
+    \uB530\uC838 \uBB3C\uC5C8\uACE0, \uC9D1\uC0AC \"\uB808\uC774\uB110\uB4DC\"\uB294
+    \uC774 \uC18C\uB3D9\uC744 \uC9C4\uC815\uC2DC\uD0A4\uB824\uACE0 \uC560\uC37C\uC2B5\uB2C8\uB2E4.
+    \r\n\r\n\uC774 \uC800\uD0DD\uC758 \uC190\uB2D8\uC778 \uB2F9\uC2E0\uC758 \uAD00\uCC30\uB825\uACFC
+    \uCD94\uB9AC\uB825\uC73C\uB85C \uC774 \uC0AC\uAC74\uC758 \uC9C4\uC0C1\uC5D0 \uB3C4\uB2EC\uD560
+    \uC218 \uC788\uC2B5\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ccc1c9dc2fa7c34c838cc57614e13ff, type: 2}
   m_sharedMaterial: {fileID: 3108579329576760681, guid: 6ccc1c9dc2fa7c34c838cc57614e13ff, type: 2}
@@ -2212,8 +2217,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2862,7 +2867,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: f802ceda35f5c4662a240c6ceef56a64, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileName
-      value: Wife
+      value: Vivian
       objectReference: {fileID: 0}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: NeutralSprite
@@ -2886,16 +2891,19 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 61d43c9213e96492da5161e16d57dfc9, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: InformationString
-      value: "Name: Mrs. Finance\nAge: 40\nOccupation: Surgeon\nRelation to victim:
-        wife\n\n\n\uADF8\uB140\uB294 \uD53C\uD574\uC790\uC640 \uD568\uAED8 \uD734\uAC00
-        \uC911 \uC218\uC601\uC744 \uD558\uACE0 \uC788\uC5C8\uC2B5\uB2C8\uB2E4. \uB0A8\uD3B8\uC774
-        \uC218\uC601\uC7A5\uC5D0 \uB6F0\uC5B4\uB4E0 \uC9C1\uD6C4 \uAD6C\uC870\uB97C
-        \uC694\uCCAD\uD558\uC790, \uC218\uC601\uC744 \uD560 \uC904 \uC544\uB294 \uADF8\uB140\uB294
-        \uADF8\uB97C \uAD6C\uD558\uAE30 \uC704\uD574 \uBB3C\uC18D\uC73C\uB85C \uB6F0\uC5B4\uB4E4\uC5C8\uC2B5\uB2C8\uB2E4.\n\n\uADF8\uB140\uB294
-        \uACB0\uD63C\uAE30\uB150\uC77C \uC120\uBB3C\uB85C \uBC1B\uC740 \uB8E8\uBE44
-        \uBAA9\uAC78\uC774\uB97C \uCC29\uC6A9\uD558\uACE0 \uC788\uC5C8\uC73C\uBA70,
-        \uC774\uD6C4 \uCE74\uBCF4\uB85C \uC5EC\uD589\uC744 \uAC00 2\uC8FC \uB354
-        \uBA38\uBB34\uB97C \uACC4\uD68D\uC774\uC5C8\uC2B5\uB2C8\uB2E4."
+      value: "\uC774\uB984: \uBE44\uBE44\uC548\n\uC9C1\uC5C5: \uD559\uC0DD\n\n\"\uBE44\uBE44\uC548\"\uC740
+        \uC774 \uC800\uD0DD\uC758 \uC678\uB3D9\uB538\uB85C, \uAE30\uBD84\uC5D0 \uB530\uB77C
+        \uD589\uB3D9\uD558\uB294 \uBCC0\uB355\uC2A4\uB7EC\uC6B4 \uC131\uACA9\uC744
+        \uC9C0\uB2C8\uACE0 \uC788\uC2B5\uB2C8\uB2E4. \uC790\uC8FC \uB364\uBC99\uB300\uBA70
+        \uC2E4\uC218\uB97C \uC800\uC9C0\uB974\uAE30 \uB54C\uBB38\uC5D0, \uC5C4\uACA9\uD55C
+        \uC9D1\uC0AC \"\uB808\uC774\uB110\uB4DC\"\uC5D0\uAC8C \uC790\uC8FC \uAFB8\uC911\uC744
+        \uB4E3\uC9C0\uB9CC, \uADF8\uC758 \uC874\uC7AC\uB97C \uC740\uADFC\uD788 \uC758\uC9C0\uD558\uACE0
+        \uC788\uC2B5\uB2C8\uB2E4.\n\n\uBE44\uBE44\uC548\uC740 \uC790\uC2E0\uC758
+        \uBC29\uC5D0\uC11C \uC18C\uC911\uD558\uAC8C \uAE30\uB974\uB294 \uC791\uC740
+        \uC0C8 \"\uC9F9\uC9F9\uC774\"\uC640 \uC2DC\uAC04\uC744 \uBCF4\uB0B4\uBA70,
+        \uB9C8\uC74C\uC744 \uB2EC\uB798\uACE4 \uD569\uB2C8\uB2E4. \n\n\uADF8\uB140\uB294
+        \uAC00\uC815\uBD80 \"\uBAB0\uB9AC\"\uAC00 \uCCB4\uB9AC \uCF00\uC774\uD06C\uB97C
+        \uBAB0\uB798 \uBA39\uC5C8\uB2E4\uACE0 \uC758\uC2EC\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: DefaultProfileSprite
@@ -2911,7 +2919,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: f6fd0dfbef04a8647b1189a52f912749, type: 3}
     - target: {fileID: 7400840336766489238, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Name
-      value: Wife
+      value: Vivian
       objectReference: {fileID: 0}
     - target: {fileID: 8862955690504552892, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Pivot.x
@@ -4107,12 +4115,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Name: Kyle\nAge: 2\nOccupation: pet\nRelation to victim: pet\n\nThis pet
-    was seen at a pet fair. Kyle used to be too scared to get in the pool even in
-    his own home. However, towards the end of Mr. Finance's swim lessons, Kyle started
-    to jump in with him. \nHe loved to try fetching Mrs. Finance's ruby necklate
-    in the water, and a video by Mrs. Finance shows her husband swimming while Kyle
-    is trying to fetch the floating ruby. \nKyle was a rescue dog. "
+  m_text: "\uC774\uB984:\n\uC9C1\uC5C5:"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ccc1c9dc2fa7c34c838cc57614e13ff, type: 2}
   m_sharedMaterial: {fileID: 3108579329576760681, guid: 6ccc1c9dc2fa7c34c838cc57614e13ff, type: 2}
@@ -4788,7 +4791,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileName
-      value: Kyle
+      value: Molly
       objectReference: {fileID: 0}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileSprite
@@ -4800,20 +4803,22 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 03d60d02db2f54c029a14fa2d2ce097b, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: InformationString
-      value: "Name: Kyle\nAge: 2\nOccupation: pet\nRelation to victim: pet\n\n\uCE74\uC77C\uC740
-        \uBC18\uB824\uB3D9\uBB3C \uBC15\uB78C\uD68C\uC5D0\uB3C4 \uCC38\uC5EC\uD55C
-        \uC720\uBA85\uD55C \uAC15\uC544\uC9C0\uC785\uB2C8\uB2E4.  \uCE74\uC77C\uC740
-        \uC9D1\uC5D0\uC11C\uB3C4 \uC218\uC601\uC7A5\uC5D0 \uB4E4\uC5B4\uAC00\uB294
-        \uAC83\uC744 \uBB34\uC11C\uC6CC\uD588\uC9C0\uB9CC, \uC7AC\uC815 \uC528\uAC00
-        \uC218\uC601 \uAC15\uC2B5\uC744 \uB9C8\uCE60 \uC988\uC74C\uBD80\uD130 \uD568\uAED8
-        \uBB3C\uC18D\uC5D0 \uB6F0\uC5B4\uB4E4\uAE30 \uC2DC\uC791\uD588\uC2B5\uB2C8\uB2E4.\r\n\r\n\uCE74\uC77C\uC740
-        \uBB3C\uC18D\uC5D0\uC11C \uC7AC\uC815 \uC528\uC758 \uC544\uB0B4\uAC00 \uCC29\uC6A9\uD55C
-        \uB8E8\uBE44 \uBAA9\uAC78\uC774\uB97C \uAC00\uC9C0\uACE0 \uB180\uBA70 \uBB3C\uAC74\uC744
-        \uAC00\uC838\uC624\uB294 \uB180\uC774\uB97C \uC990\uACBC\uACE0, \uC544\uB0B4\uAC00
-        \uCC0D\uC740 \uC601\uC0C1\uC5D0\uB294 \uB0A8\uD3B8\uC774 \uC218\uC601\uD558\uB294
-        \uB3D9\uC548 \uCE74\uC77C\uC774 \uB5A0 \uC788\uB294 \uB8E8\uBE44 \uBAA9\uAC78\uC774\uB97C
-        \uBB3C\uC5B4\uC624\uB824\uACE0 \uD558\uB294 \uC7A5\uBA74\uC774 \uB2F4\uACA8
-        \uC788\uC2B5\uB2C8\uB2E4.\r\n\r\n\uCE74\uC77C\uC740 \uAD6C\uC870\uB41C \uC720\uAE30\uACAC\uC774\uC5C8\uC2B5\uB2C8\uB2E4."
+      value: "\uC774\uB984: \uBAB0\uB9AC\r\n\uC9C1\uC5C5: \uAC00\uC815\uBD80\r\n\r\n\"\uBAB0\uB9AC\"\uB294
+        \uC774 \uC800\uD0DD\uC5D0\uC11C \uC77C\uD55C \uC9C0 8\uAC1C\uC6D4\uC774 \uB41C
+        \uAC00\uC815\uBD80\uC785\uB2C8\uB2E4. \uADF8\uB140\uB294 \uAC00\uB09C\uD55C
+        \uC9D1\uC548\uC5D0\uC11C \uD0DC\uC5B4\uB098, 4\uBA85\uC758 \uC5B4\uB9B0 \uB3D9\uC0DD\uB4E4\uC744
+        \uB3CC\uBCF4\uBA70 \uADF8\uB4E4\uC774 \uBD80\uC871\uD568 \uC5C6\uC774 \uC790\uB784
+        \uC218 \uC788\uB3C4\uB85D \uCD5C\uC120\uC744 \uB2E4\uD558\uB294 \uCC45\uC784\uAC10
+        \uAC15\uD55C \uC7A5\uB140\uC785\uB2C8\uB2E4.\r\n\r\n\uADF8\uB7EC\uB098 \"\uBAB0\uB9AC\"\uB294
+        \uC2DD\uD0D0\uC774 \uB9CE\uC544, \uAC00\uB054 \uC77C\uD558\uB294 \uB3C4\uC911
+        \uC815\uC6D0\uC5D0\uC11C \uC7A1\uCD08\uB97C \uBA39\uB2E4\uAC00 \uC9D1\uC0AC
+        \"\uB808\uC774\uB110\uB4DC\"\uC5D0\uAC8C \uC800\uD0DD \uC0AC\uC6A9\uC778\uC73C\uB85C\uC11C
+        \uBD80\uC801\uC808\uD55C \uD589\uB3D9\uC5D0 \uB300\uD574 \uC8FC\uC758\uB97C
+        \uBC1B\uACE4 \uD569\uB2C8\uB2E4.\r\n\r\n\uADF8\uB140\uB294 \"\uBE44\uBE44\uC548\"\uC758
+        \uBD80\uD0C1\uB300\uB85C \uBC29 \uC548\uC758 \uBAA8\uB4E0 \uB514\uC800\uD2B8\uB97C
+        \uC8FC\uBC29\uC758 \uB0C9\uC7A5\uACE0\uB85C \uC62E\uACBC\uB2E4\uACE0 \uC8FC\uC7A5\uD558\uBA70,
+        \uC790\uC2E0\uC774 \uCF00\uC774\uD06C\uB97C \uBA39\uAC70\uB098 \uC228\uAE30\uC9C0
+        \uC54A\uC558\uB2E4\uACE0 \uAC15\uD558\uAC8C \uBD80\uC778\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: DefaultProfileSprite
@@ -4829,7 +4834,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 7f46c8e59f4de454c8b2e4ba920ed998, type: 3}
     - target: {fileID: 7400840336766489238, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Name
-      value: Kyle
+      value: Molly
       objectReference: {fileID: 0}
     - target: {fileID: 8862955690504552892, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: m_Pivot.x
@@ -5220,20 +5225,9 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 03d60d02db2f54c029a14fa2d2ce097b, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: InformationString
-      value: "Name: Kyle\nAge: 2\nOccupation: pet\nRelation to victim: pet\n\n\uCE74\uC77C\uC740
-        \uBC18\uB824\uB3D9\uBB3C \uBC15\uB78C\uD68C\uC5D0\uB3C4 \uCC38\uC5EC\uD55C
-        \uC720\uBA85\uD55C \uAC15\uC544\uC9C0\uC785\uB2C8\uB2E4.  \uCE74\uC77C\uC740
-        \uC9D1\uC5D0\uC11C\uB3C4 \uC218\uC601\uC7A5\uC5D0 \uB4E4\uC5B4\uAC00\uB294
-        \uAC83\uC744 \uBB34\uC11C\uC6CC\uD588\uC9C0\uB9CC, \uC7AC\uC815 \uC528\uAC00
-        \uC218\uC601 \uAC15\uC2B5\uC744 \uB9C8\uCE60 \uC988\uC74C\uBD80\uD130 \uD568\uAED8
-        \uBB3C\uC18D\uC5D0 \uB6F0\uC5B4\uB4E4\uAE30 \uC2DC\uC791\uD588\uC2B5\uB2C8\uB2E4.\r\n\r\n\uCE74\uC77C\uC740
-        \uBB3C\uC18D\uC5D0\uC11C \uC7AC\uC815 \uC528\uC758 \uC544\uB0B4\uAC00 \uCC29\uC6A9\uD55C
-        \uB8E8\uBE44 \uBAA9\uAC78\uC774\uB97C \uAC00\uC9C0\uACE0 \uB180\uBA70 \uBB3C\uAC74\uC744
-        \uAC00\uC838\uC624\uB294 \uB180\uC774\uB97C \uC990\uACBC\uACE0, \uC544\uB0B4\uAC00
-        \uCC0D\uC740 \uC601\uC0C1\uC5D0\uB294 \uB0A8\uD3B8\uC774 \uC218\uC601\uD558\uB294
-        \uB3D9\uC548 \uCE74\uC77C\uC774 \uB5A0 \uC788\uB294 \uB8E8\uBE44 \uBAA9\uAC78\uC774\uB97C
-        \uBB3C\uC5B4\uC624\uB824\uACE0 \uD558\uB294 \uC7A5\uBA74\uC774 \uB2F4\uACA8
-        \uC788\uC2B5\uB2C8\uB2E4.\r\n\r\n\uCE74\uC77C\uC740 \uAD6C\uC870\uB41C \uC720\uAE30\uACAC\uC774\uC5C8\uC2B5\uB2C8\uB2E4."
+      value: "\uC774\uB984: \uC9F9\uC9F9\uC774\n\uC9C1\uC5C5: \uC560\uC644\uB3D9\uBB3C\n\n\uC9F9\uC9F9\uC774\uB294
+        \uC0C8\uC7A5 \uC548\uC5D0\uC11C \uC9F9\uC9F9\uAC70\uB9AC\uACE0 \uC788\uB2E4.\n\uC9F9\uC9F9\uC774\uB97C
+        \uC880 \uB354 \uC790\uC138\uD788 \uC0B4\uD3B4\uBCF4\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
       objectReference: {fileID: 0}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: DefaultProfileSprite
