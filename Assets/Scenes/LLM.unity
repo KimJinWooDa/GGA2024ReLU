@@ -3367,6 +3367,7 @@ MonoBehaviour:
   azureSTT: {fileID: 559051807}
   microphoneRecorder: {fileID: 449187151}
   runWhisper: {fileID: 449187150}
+  chatHandler: {fileID: 41663967}
 --- !u!4 &1260439770
 Transform:
   m_ObjectHideFlags: 0

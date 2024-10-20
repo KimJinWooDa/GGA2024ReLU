@@ -102,6 +102,21 @@ public class ChatHandler : MonoBehaviour
         }
     }
 
+    public void OnEndSpeaking()
+    {
+        displayClaudeText.gameObject.SetActive(false);
+        
+        string userMessage = userInputField.text;
+        displayUserText.text = "You entered: " + userMessage;  // 유저 입력을 화면에 표시
+        displayUserText.gameObject.SetActive(true);
+
+        // ClaudeClient를 통해 메시지를 보내고 응답을 받음
+        StartCoroutine(SendToClaude(userMessage));
+
+        // 입력 필드를 비움
+        userInputField.text = "";
+    }
+
     // Claude API에 메시지를 보내고 응답을 표시하는 코루틴 함수
     private IEnumerator SendToClaude(string userMessage)
     {

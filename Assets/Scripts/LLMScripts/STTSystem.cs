@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +14,8 @@ public class STTSystem : MonoBehaviour
     [SerializeField] private AzureSTT azureSTT;
     [SerializeField] private MicrophoneRecorder microphoneRecorder;
     [SerializeField] private RunWhisper runWhisper;
+
+    [SerializeField] private ChatHandler chatHandler;
 
     private bool isRecording = false;
     private DecisionSystem.WhisperModel currentWhisperModel;
@@ -47,6 +48,8 @@ public class STTSystem : MonoBehaviour
         }
         transcriptionDisplay.text = inTranscribedString;
         transcriptionDisplay.gameObject.SetActive(true);
+
+        chatHandler.OnEndSpeaking();
     }
 
     private void StartRecording()
