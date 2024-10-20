@@ -866,17 +866,37 @@ PrefabInstance:
     m_TransformParent: {fileID: 1060613918}
     m_Modifications:
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: JoySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 96015e362b9b6f7459d0399b5cbdc519, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: AngerSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 765a4367d7b44eb4ba214018791b4f04, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileName
       value: Reginald
       objectReference: {fileID: 0}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: NeutralSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e91c305d8c4fca640bd6fb8f7f237a63, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileSprite
       value: 
       objectReference: {fileID: 21300000, guid: 3f423f18bae754a7dbae893a08d00eef, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: SadnessSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3eb05091f9e014d408256346eb9e7e0b, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: profileSprite
       value: 
       objectReference: {fileID: 21300000, guid: 3f423f18bae754a7dbae893a08d00eef, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: SurprisedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 854b55a121b785b4fbec03ab82e396dd, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: InformationString
       value: "\uC774\uB984: \uB808\uC774\uB110\uB4DC\n\uC9C1\uC5C5: \uC9D1\uC0AC\n\n\"\uB808\uC774\uB110\uB4DC\"\uB294
@@ -2856,7 +2876,7 @@ PrefabInstance:
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: JoySprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3f423f18bae754a7dbae893a08d00eef, type: 3}
+      objectReference: {fileID: 21300000, guid: ae0b4fbcbf9ed8f418691f1323cdfc87, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: FearSprite
       value: 
@@ -2864,7 +2884,7 @@ PrefabInstance:
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: AngerSprite
       value: 
-      objectReference: {fileID: 21300000, guid: f802ceda35f5c4662a240c6ceef56a64, type: 3}
+      objectReference: {fileID: 21300000, guid: f8d4c0d6303943248a5798fde5787d89, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileName
       value: Vivian
@@ -2872,7 +2892,7 @@ PrefabInstance:
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: NeutralSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 695bf1a0f9b004b57b57a6b3f78e4322, type: 3}
+      objectReference: {fileID: 21300000, guid: f6fd0dfbef04a8647b1189a52f912749, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileSprite
       value: 
@@ -2880,11 +2900,15 @@ PrefabInstance:
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: SadnessSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3e4bce5241c7642d392b39886c15f562, type: 3}
+      objectReference: {fileID: 21300000, guid: 9663ccc993ea3bc41b4a0ea5324eee4f, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: profileSprite
       value: 
       objectReference: {fileID: 21300000, guid: ee6c8f37bd0f143a89513cadc662c0b0, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: SurprisedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5c137e0e6444a1c4da2a9b7459a61412, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ExcitementSprite
       value: 
@@ -4790,17 +4814,37 @@ PrefabInstance:
     m_TransformParent: {fileID: 1060613918}
     m_Modifications:
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: JoySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: da6b9d757cbd0fc4abf1eadc8e3ecc16, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: AngerSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f5377eb246f5410488e5968ff5073dfe, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileName
       value: Molly
       objectReference: {fileID: 0}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: NeutralSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f46c8e59f4de454c8b2e4ba920ed998, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileSprite
       value: 
       objectReference: {fileID: 21300000, guid: 03d60d02db2f54c029a14fa2d2ce097b, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: SadnessSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 495946baf01034640b44ae30181e14bc, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: profileSprite
       value: 
       objectReference: {fileID: 21300000, guid: 03d60d02db2f54c029a14fa2d2ce097b, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: SurprisedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 40825332a923d6241ac21fb5e144d044, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: InformationString
       value: "\uC774\uB984: \uBAB0\uB9AC\r\n\uC9C1\uC5C5: \uAC00\uC815\uBD80\r\n\r\n\"\uBAB0\uB9AC\"\uB294
@@ -5212,9 +5256,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1060613918}
     m_Modifications:
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: JoySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: becad879e3b04654c9609c74dd53f432, type: 3}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileName
       value: Bird
       objectReference: {fileID: 0}
+    - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
+      propertyPath: NeutralSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 450870b76d2b3f34ca45222c801d4192, type: 3}
     - target: {fileID: 725611927909820801, guid: 3ef784422b3ef114d82354bbb759ac85, type: 3}
       propertyPath: ProfileSprite
       value: 
