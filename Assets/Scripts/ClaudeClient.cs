@@ -153,9 +153,13 @@ public class ClaudeClient : MonoBehaviour
 
             Below is a list of trigger messages and the user message:
             User Message: '{userMessage}'" +
-            // Trigger Messages: {triggerMessagesJson}
+            $@"Trigger Messages: {triggerMessagesJson}" + 
 
-            // Check if the user message contains knowledge of any of the trigger messages. Make sure to consider the context when determining if the user message contains any trigger message. 
+            "Ensure that isConfession becomes true only if when the facts contained in the user message match all the content of the trigger message." + 
+            "Be sure to consider the context when determining whether the user message fully contains the trigger message." +
+
+            // "Check if the user message contains knowledge of any of the trigger messages." +
+            // "Make sure to consider the context when determining if the user message contains all trigger message." + 
 
             // Important guidelines:
             // - If the user message contains negations or modifications that change the meaning of the trigger message (e.g., adding 'not', 'didn't', 'never'), do NOT consider it as containing the trigger message.
