@@ -30,7 +30,7 @@ public class ClaudeClient : MonoBehaviour
         },
         'emotion': {
           'type': 'string',
-          'enum': ['Anger', 'Sadness', 'Joy', 'Neutral', 'Excitement', 'Fear']
+          'enum': ['Anger', 'Sadness', 'Joy', 'Neutral', 'Surprised']
         },
         'isConfession': {
           'type': 'boolean'

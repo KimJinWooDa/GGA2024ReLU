@@ -13,8 +13,7 @@ public enum Emotion
     Sadness,
     Joy,
     Neutral,
-    Excitement,
-    Fear
+    Surprised,
 }
 public class ResponseData
 {
@@ -130,7 +129,8 @@ public class ChatHandler : MonoBehaviour
             
             // 미리 지정한 문자열을 출력
             displayClaudeText.text = randomBirdMessage;
-            informationPanel.OnResponseReceived(0, randomBirdMessage, Emotion.Joy); // 임의의 값 사용
+            informationPanel.OnResponseReceived(0, randomBirdMessage, 
+                (UnityEngine.Random.Range(0, 2) == 0) ? Emotion.Joy : Emotion.Neutral);
             displayClaudeText.gameObject.SetActive(true);
             
             loadingIndicator.SetActive(false);

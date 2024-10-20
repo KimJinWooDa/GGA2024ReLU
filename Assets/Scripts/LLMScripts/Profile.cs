@@ -21,8 +21,9 @@ public class Profile : MonoBehaviour
     public Sprite SadnessSprite;
     public Sprite JoySprite;
     public Sprite NeutralSprite;
-    public Sprite ExcitementSprite;
-    public Sprite FearSprite;
+    public Sprite SurprisedSprite;
+    // public Sprite ExcitementSprite;
+    // public Sprite FearSprite;
     
     
     public void Initialize()

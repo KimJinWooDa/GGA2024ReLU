@@ -38,14 +38,18 @@ public class InformationPanel : MonoBehaviour
                 if (!selectedProfile.NeutralSprite) return;
                 profileImage.sprite = selectedProfile.NeutralSprite;
                 break;
-            case Emotion.Excitement:
-                if (!selectedProfile.ExcitementSprite) return;
-                profileImage.sprite = selectedProfile.ExcitementSprite;
+            case Emotion.Surprised:
+                if (!selectedProfile.SurprisedSprite) return;
+                profileImage.sprite = selectedProfile.SurprisedSprite;
                 break;
-            case Emotion.Fear:
-                if (!selectedProfile.FearSprite) return;
-                profileImage.sprite = selectedProfile.FearSprite;
-                break;
+            // case Emotion.Excitement:
+            //     if (!selectedProfile.ExcitementSprite) return;
+            //     profileImage.sprite = selectedProfile.ExcitementSprite;
+            //     break;
+            // case Emotion.Fear:
+            //     if (!selectedProfile.FearSprite) return;
+            //     profileImage.sprite = selectedProfile.FearSprite;
+            //     break;
             default:
                 if (!selectedProfile.DefaultProfileSprite) return;
                 profileImage.sprite = selectedProfile.DefaultProfileSprite;
