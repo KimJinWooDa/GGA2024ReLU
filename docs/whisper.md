@@ -31,6 +31,8 @@ https://netron.app/
 
 https://docs.unity3d.com/Packages/com.unity.sentis@1.5/manual/serialize-a-model.html
 
+* [Sentis 파일 다운로드](https://drive.google.com/drive/folders/14Qlp8UyoX-8YV8_Uoup3_Dt83LFInSRc?usp=sharing)
+
 ### STT 개선책
 
 * Whisper Tiny, Base, Small, Medium, Large 
