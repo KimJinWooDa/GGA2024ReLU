@@ -15,6 +15,8 @@ public class ClaudeClient : MonoBehaviour
     private readonly HttpClient httpClient = new HttpClient();
     private const string API_URL = "https://api.anthropic.com/v1/messages";
 
+    [SerializeField]
+    private string API_KEY;
     
     private const string jsonSchema = @"
     {
@@ -51,7 +53,7 @@ public class ClaudeClient : MonoBehaviour
 
     private void Start()
     {
-        httpClient.DefaultRequestHeaders.Add("x-api-key", "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");
+        httpClient.DefaultRequestHeaders.Add("x-api-key", API_KEY);
         httpClient.DefaultRequestHeaders.Add("anthropic-version", "2023-06-01");
         
     }
