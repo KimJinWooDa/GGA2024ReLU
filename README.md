@@ -18,23 +18,14 @@
 쉬는 시간 (15분)
 5. 실습 (1시간)
 
+### 외부 링크
+
+[구글 드라이브 링크](https://drive.google.com/drive/folders/14Qlp8UyoX-8YV8_Uoup3_Dt83LFInSRc?usp=sharing)
+
 ### 기타 참고
 - [STT 씬 세팅](docs/stt_settings.md)  
 - [LLM 씬 세팅](docs/llm_settings.md)
 ***
-
-### TODO
-
-- [x] Local STT / Azure 선택 기능 적용
-- [x] 자모 분리 기능 적용
-- [x] 자모 분리 선택 기능 적용
-- [x] Levenshtein 점수 측정 기능
-- [ ] Levenshtein Distance / strcmp 선택 기능 추가
-- [ ] Whisper 모델 업그레이드
-- [ ] Phi 모델 업그레이드
-- [ ] Claude Prompt Engineering (캐릭터성 부여)
-- [ ] Claude Prompt Engineering (json 포맷팅)
-- [x] Font 깨짐 이슈 해결
 
 ***
 
