@@ -72,6 +72,10 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Large sentis files
+/[Aa]ssets/[Ss]treamingAssets/AudioDecoder_Tiny.sentis
+/[Aa]ssets/[Ss]treamingAssets/AudioDecoder_Tiny.sentis.meta
+/[Aa]ssets/[Ss]treamingAssets/AudioEncoder_Tiny.sentis
+/[Aa]ssets/[Ss]treamingAssets/AudioEncoder_Tiny.sentis.meta
 /[Aa]ssets/[Ss]treamingAssets/AudioDecoder_Base.sentis
 /[Aa]ssets/[Ss]treamingAssets/AudioDecoder_Base.sentis.meta
 /[Aa]ssets/[Ss]treamingAssets/AudioEncoder_Base.sentis
