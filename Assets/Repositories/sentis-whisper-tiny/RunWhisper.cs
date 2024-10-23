@@ -14,7 +14,6 @@ public class RunWhisper : MonoBehaviour
 
     const BackendType backend = BackendType.GPUCompute;
 
-    // ??? ??? ???? ????
     private AudioClip audioClip;
 
     // Maximum tokens for output
@@ -46,19 +45,16 @@ public class RunWhisper : MonoBehaviour
     // Maximum size of audioClip (30s at 16kHz)
     const int maxSamples = 30 * 16000;
 
-    // ?????? ?? ??
     private Action<string> transcriptionCompleteCallback;
     
     private Dictionary<int, string> vocab;
     private List<byte> byteBuffer = new List<byte>();
 
-    // ?? ???? Start?? ??
     void Start()
     {
         SetupWhiteSpaceShifts();
         GetTokens();
 
-        // ?? ???
         //@note: no default reload to avoid conflict with decisionsystem's reload 
 
         string vocabPath = Application.streamingAssetsPath + "/multilingual.tiktoken";
@@ -79,41 +75,6 @@ public class RunWhisper : MonoBehaviour
         //vocab dictionary to be saved and used in decoding elsewhere 
         vocab = d.ToDictionary(entry => entry.Key, entry => entry.Value);
 
-        // List<byte[]> decodedBytesList = new List<byte[]>();
-        // int[] values = { 45326, 120, 4815, 48267, 1517, 15933, 250, 119, 3049 }; // == ID 
-        // foreach (int v in values)
-        // {
-        //     if (d.ContainsKey(v))
-        //     {
-        //         string base64String = d[v];
-        //         try
-        //         {
-        //             byte[] decodedBytes = Convert.FromBase64String(base64String);
-        //             decodedBytesList.Add(decodedBytes);
-        //         }
-        //         catch (FormatException ex)
-        //         {
-        //             Debug.LogWarning($"Warning: Error decoding Base64 for value {v}: {ex.Message}");
-        //         }
-        //     }
-        //     else
-        //     {
-        //         Debug.LogWarning($"Warning: Value {v} not found in the dictionary.");
-        //     }
-        // }
-
-        // byte[] resultBytes = decodedBytesList.SelectMany(b => b).ToArray();
-
-        // Debug.Log("Byte Array: " + BitConverter.ToString(resultBytes));
-        // try
-        // {
-        //     string decodedString = System.Text.Encoding.UTF8.GetString(resultBytes);
-        //     Debug.Log("Decoded String: " + decodedString);
-        // }
-        // catch (Exception ex)
-        // {
-        //     Debug.LogError("Error decoding bytes to UTF-8: " + ex.Message);
-        // }
     }
 
     public void ReloadModel(DecisionSystem.WhisperModel inModel)
@@ -145,20 +106,17 @@ public class RunWhisper : MonoBehaviour
         );
         Model spectro = ModelLoader.Load(Application.streamingAssetsPath + "/LogMelSepctro.sentis");
 
-        // ?? ???
         decoderEngine = WorkerFactory.CreateWorker(backend, decoderWithArgMax);
         encoderEngine = WorkerFactory.CreateWorker(backend, encoder);
         spectroEngine = WorkerFactory.CreateWorker(backend, spectro);
 
     }
 
-    // ???? ??? ??? ?? ?????? ??
     public void StartTranscription(AudioClip clip, Action<string> callback = null)
     {
         audioClip = clip;
         transcriptionCompleteCallback = callback;
 
-        // ?????? ?? ???
         outputTokens[0] = START_OF_TRANSCRIPT;
         outputTokens[1] = KOREAN;
         outputTokens[2] = TRANSCRIBE;
@@ -166,15 +124,12 @@ public class RunWhisper : MonoBehaviour
         currentToken = 3;
         outputString = "";
 
-        // ??? ?? ? ???
         LoadAudio();
         EncodeAudio();
 
-        // ?????? ??
         transcribe = true;
     }
 
-    // ??? ??? ??
     void LoadAudio()
     {
         if (audioClip.frequency != 16000)
@@ -196,7 +151,6 @@ public class RunWhisper : MonoBehaviour
         audioClip.GetData(data, 0);
     }
 
-    // ??? ???
     void EncodeAudio()
     {
         using var input = new TensorFloat(new TensorShape(1, numSamples), data);
@@ -208,7 +162,6 @@ public class RunWhisper : MonoBehaviour
         encodedAudio = encoderEngine.PeekOutput() as TensorFloat;
     }
 
-    // Update ????? ????? ?????? ??
     void Update()
     {
         if (transcribe && currentToken < outputTokens.Length - 1)
@@ -242,13 +195,10 @@ public class RunWhisper : MonoBehaviour
             }
             else
             {
-                // Debug.Log($"token[ID]={tokens[ID]}");
-                //outputString += GetUnicodeText(tokens[ID]);
                 outputString += DecodeID(ID);
             }
 
             Debug.Log(outputString);
-            // Debug.Log(string.Join(", ", outputTokens));
         }
     }
 
@@ -272,17 +222,6 @@ public class RunWhisper : MonoBehaviour
             Debug.LogWarning($"Warning: Value {id} not found in the dictionary.");
         }
 
-        // Debug.Log("Byte Array: " + BitConverter.ToString(decodedBytes));
-        // string decodedString = string.Empty;
-        // try
-        // {
-        //     decodedString = System.Text.Encoding.UTF8.GetString(decodedBytes);
-        //     Debug.Log("Decoded String: " + decodedString);
-        // }
-        // catch (Exception ex)
-        // {
-        //     Debug.LogError("Error decoding bytes to UTF-8: " + ex.Message);
-        // }
         string decodedString = ProcessDecodedBytes(decodedBytes);
 
         return decodedString;
@@ -342,7 +281,6 @@ public class RunWhisper : MonoBehaviour
         return false;
     }
 
-    // ?? ??? ????? ??
     string GetUnicodeText(string text)
     {
         var bytes = Encoding.GetEncoding("ISO-8859-1").GetBytes(ShiftCharacterDown(text));
@@ -374,7 +312,6 @@ public class RunWhisper : MonoBehaviour
         return !(('!' <= c && c <= '~') || ('?' <= c && c <= '?') || ('?' <= c && c <= '?'));
     }
 
-    // vocab.json?? ?? ????
     void GetTokens()
     {
         string vocabFilePath = Path.Combine(Application.streamingAssetsPath, "vocab.json");

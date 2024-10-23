@@ -159,23 +159,6 @@ public class ClaudeClient : MonoBehaviour
 
             "Ensure that isConfession becomes true only if when the facts contained in the user message match all the content of the trigger message." + 
             "Be sure to consider the context when determining whether the user message fully contains the trigger message." +
-
-            // "Check if the user message contains knowledge of any of the trigger messages." +
-            // "Make sure to consider the context when determining if the user message contains all trigger message." + 
-
-            // Important guidelines:
-            // - If the user message contains negations or modifications that change the meaning of the trigger message (e.g., adding 'not', 'didn't', 'never'), do NOT consider it as containing the trigger message.
-            // - If the user message contains similar words but changes the overall intent or context of the trigger message, do NOT consider it as containing the trigger message.
-            
-            // Here are some guidelines to help you:
-            // - If the trigger message is 'I love you' and the user message is 'I love ice cream,' do NOT consider it to contain the trigger message.
-            // - If the trigger message is 'House is on fire' and the user message is 'I'm on fire today' or 'House is on water,' do NOT consider it to contain the trigger message.
-            // - If the trigger message is 'Potatoes are on fire' and the user message is 'Potatoes are wet,' do NOT consider it to contain the trigger message.
-            // - If the trigger message is 'You did hold onto the ruby' and the user message is 'You did not hold onto the ruby,' do NOT consider it to contain the trigger message.
-            // - If the trigger message is 'They are not happy' and the user message is 'They are happy, but I am not,' do NOT consider it to contain the trigger message.
-
-            // If the user message directly confirms or is contextually similar to any of the trigger messages (without negations or changes in meaning), set 'isConfession' to true. Otherwise, set 'isConfession' to false.
-
             "Ensure all values conform to the specified types and constraints. Do not include any explanations or additional text outside the JSON structure.";
 
             var requestBody = new
