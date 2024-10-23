@@ -3,8 +3,8 @@
 ## Unity에서 동작하는 음성 인식과 언어모델 실습
 
 ### 목차
-1. 샘플 프로젝트 A
-2. 샘플 프로젝트 B
+1. STT 프로젝트
+2. LLM 프로젝트
 3. [Unity Sentis Whisper Tiny](/docs/whisper.md)
 4. [Microsoft Azure AI Speech-to-text](/docs/azure-stt.md)
 5. [Claude](/docs/claude.md)
@@ -25,7 +25,6 @@
 ### 기타 참고
 - [STT 씬 세팅](docs/stt_settings.md)  
 - [LLM 씬 세팅](docs/llm_settings.md)
-***
 
 ***
 

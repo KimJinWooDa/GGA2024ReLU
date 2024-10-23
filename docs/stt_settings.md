@@ -28,5 +28,3 @@
 2. Phoneme (자음 모음 분리 예: ㅇ ㅗ ㄴ ㅡ ㄹ)  
    **게임 시작 전:** DecisionSystem의 String Compare Type Setting 드롭다운  
    **게임 시작 후:** String Compare 토글 
-
-

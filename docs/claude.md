@@ -19,6 +19,4 @@ https://github.com/anthropics/courses/blob/master/prompt_engineering_interactive
 
 ### LLM 
 
-* ChatGPT, Phi, 
-
-
+* ChatGPT, Phi
